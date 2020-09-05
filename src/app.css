@@ -1,4 +1,7 @@
+
 .app-wrapper {
+    margin: 0 auto;
+    width: 1200px;
     display: grid;
     grid-template-areas:
         "h h"
@@ -7,20 +10,4 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.header {
-    grid-area: h;
-    background-color: green;
-}
-.header img{
-    width: 150px;
-}
 
-.navigation {
-    grid-area: n;
-    background-color: yellow;
-}
-
-.content {
-    grid-area: c;
-    
-}

@@ -1,0 +1,12 @@
+.navigation {
+    grid-area: n;
+    background-color: yellow;
+}
+.item {
+    text-decoration: none;
+    color: green;
+}
+.item.active {
+    text-decoration: none;
+    color: tomato;
+}
