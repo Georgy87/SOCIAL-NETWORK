@@ -1,10 +1,10 @@
 import React from 'react';
-import s from './Navigation.module.css';
+import s from './Navbar.module.css';
 // let active = s.active;
 // let classes = `${s.item} ${active}`;
-const Navigation = () => {
+const Navbar = () => {
     return (
-        <nav className={s.navigation}>
+        <nav className={s.nav}>
 			<div className={s.item}>
 				<a>Profile</a>
 			</div>
@@ -24,4 +24,4 @@ const Navigation = () => {
     )
 }
 
-export default Navigation;
+export default Navbar;
