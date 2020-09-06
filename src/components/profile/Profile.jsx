@@ -4,9 +4,9 @@ import MyPosts from './myPosts/MyPosts';
 
 const Profile = () => {
     return (
-        <div className={s.content}>
+		<div>
 			<div>
-				<img src="https://miro.medium.com/max/1000/1*yrgbW7GvOcp94f-5HZcmyQ.jpeg" alt=""/>
+				<img className={s.poster} src="https://miro.medium.com/max/1000/1*yrgbW7GvOcp94f-5HZcmyQ.jpeg" alt=""/>
 			</div>
 			<div>
 				ava + descr

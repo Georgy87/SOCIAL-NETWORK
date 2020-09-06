@@ -1,7 +1,4 @@
-.content {
-    grid-area: c;
-}
-.content img {
+.poster {
+    width: 700px;
     height: 400px;
-    width: 800px;
 }
