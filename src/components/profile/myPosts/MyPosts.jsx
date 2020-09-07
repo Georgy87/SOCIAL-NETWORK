@@ -4,11 +4,13 @@ import Post from './post/post';
 
 const MyPosts = () => {
     return (
-			<div>
+			<div className={s.postWrapper}>
 				My post
 				<div>
-					<textarea name="" id="" cols="20" rows="5"></textarea>
-                    <button>Add post</button>
+					<textarea name="" id="" cols="20" rows="2"></textarea>
+					<div>
+						<button>Add post</button>
+					</div>
 				</div>
 				<div className={s.posts}>
 					<Post message="Gosha" like="5"/>
