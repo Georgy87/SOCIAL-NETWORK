@@ -2,11 +2,9 @@
     grid-area: n;
     background-color: yellow;
 }
-.item {
-    text-decoration: none;
+.item a {
     color: green;
 }
-.item.active {
-    text-decoration: none;
+.item a.activeLink {
     color: tomato;
 }
