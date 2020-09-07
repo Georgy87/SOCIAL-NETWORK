@@ -1,18 +1,21 @@
-import React from 'react';
-import s from './Navbar.module.css';
-import {NavLink} from 'react-router-dom';
+import React from "react";
+import s from "./Navbar.module.css";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-	console.log(s)
     return (
         <nav className={s.nav}>
-			<div className={s.item}>
-				<NavLink to="/profile" activeClassName={s.activeLink}>Profile</NavLink>
-			</div>
-			<div  className={s.item}>
-                <NavLink to="/dialog" activeClassName={s.activeLink}>Messages</NavLink>
-			</div>
-			{/* <div className={s.item}>
+            <div className={s.item}>
+                <NavLink to="/profile" activeClassName={s.activeLink}>
+                    Profile
+                </NavLink>
+            </div>
+            <div className={s.item}>
+                <NavLink to="/dialog" activeClassName={s.activeLink}>
+                    Messages
+                </NavLink>
+            </div>
+            {/* <div className={s.item}>
 				<a>News</a>
 			</div>
 			<div className={s.item}>
@@ -21,8 +24,8 @@ const Navbar = () => {
 			<div className={s.item}>
 				<a>Settings</a>
 			</div> */}
-		</nav>
-    )
-}
+        </nav>
+    );
+};
 
 export default Navbar;

@@ -7,7 +7,7 @@
     padding: 10px;
 }
 
-.dialogsItem a{
+.dialogsItem a {
     padding: 10px;
     text-decoration: none;
     color: black;
@@ -16,4 +16,3 @@
 .active {
     color: orange;
 }
-
