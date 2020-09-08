@@ -1,0 +1,17 @@
+.navbar-wrapper {
+    grid-area: n;
+    background-color: rgb(201, 216, 182);
+    padding: 10px;
+}
+
+.navbar-item a {
+    font-size: 20px;
+    color: white;
+}
+.navbar-item a:hover {
+    text-decoration: none;
+}
+
+.navbar-item a.activeLink {
+    color: rgb(214, 133, 133);
+}

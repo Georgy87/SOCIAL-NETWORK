@@ -5,9 +5,10 @@ const ProfileInfo = () => {
     return (
         <div>
             <div className={s.poster}>
+                {/* Ava */}
             </div>
             <div className={s.descr}>
-                ava + descr
+                descr
             </div>
         </div>
     )
