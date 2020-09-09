@@ -1,3 +1,16 @@
 .header {
     grid-area: h;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 5px;
+    background-color: rgba(238, 227, 227, 0.3);
+    box-shadow: 1px -1px 3px 1px rgba(163, 162, 162, 0.5);
+}
+.header-title {
+    display: block;
+    text-align: start;
+    line-height: 45px;
+    margin-left: 70px;
+    opacity: 0.8;
+    font-size: 25px;
 }
