@@ -1,21 +1,15 @@
 import React from 'react';
-import s from './MyPosts.module.css';
-import Post from './post/post';
+import './MyPosts.css';
+import Post from './post/Post';
 
-const MyPosts = () => {
-	const postMessages = [
-		{ id: "1", message: "Keep your presence fresh on Google.", like: "5" },
-		{ id: "2",  message: "Get verified and start posting today.", like: "1" },
-		{ id: "3", message: "Your audience is searching for you. Get verified on Google and amplify your brand.", like: "2" }
-	];
-
+const MyPosts = ({postMessages}) => {
 	const elementPostMessages = postMessages.map(item => {
 		const { id, message, like } = item;
 		return <Post key={id} like={like} message={message}/>
 	});
 
     return (
-		<div className={s.postWrapper}>
+		<div className="post-wrapper">
 			My post
 			<div>
 				<textarea name="" id="" cols="20" rows="2"></textarea>
@@ -23,7 +17,7 @@ const MyPosts = () => {
 					<button>Add post</button>
 				</div>
 			</div>
-			<div className={s.posts}>
+			<div className="posts">
 				{elementPostMessages}
 			</div>
 		</div>

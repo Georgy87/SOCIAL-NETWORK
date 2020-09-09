@@ -1,13 +1,13 @@
 import React from 'react';
-import s from './ProfileInfo.module.css';
+import './ProfileInfo.css';
 
 const ProfileInfo = () => {
     return (
         <div>
-            <div className={s.poster}>
+            <div className="poster">
                 {/* Ava */}
             </div>
-            <div className={s.descr}>
+            <div className="descr">
                 descr
             </div>
         </div>
