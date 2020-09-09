@@ -7,23 +7,22 @@ import {Route, BrowserRouter} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './app.css';
-const App = ({postMessages, dialogNames, dialogMessages}) => {
+const App = (props) => {
+	const elementProfile = () => <Profile postMessages={props.postMessages}/>;
+	const elementDialog = () => <Dialog stateDialog={props.stateDialog}/>;
 
-	const elementProfile = () => <Profile postMessages={postMessages}/>;
-	const elementDialog = () => <Dialog dialogNames={dialogNames} dialogMessages={dialogMessages}/>;
-
-  return (
-	<BrowserRouter>
-		<div className="app-wrapper">
-			<Header/>
-			<Navbar/>
-			<div className="app-wrapper-content">
-				<Route path='/profile' component={elementProfile}/>
-				<Route path='/dialog' component={elementDialog}/>
+  	return (
+		<BrowserRouter>
+			<div className="app-wrapper">
+				<Header/>
+				<Navbar/>
+				<div className="app-wrapper-content">
+					<Route path='/profile' component={elementProfile}/>
+					<Route path='/dialog' component={elementDialog}/>
+				</div>
 			</div>
-		</div>
-	</BrowserRouter>
-  )
+		</BrowserRouter>
+  	)
 }
 
 export default App;

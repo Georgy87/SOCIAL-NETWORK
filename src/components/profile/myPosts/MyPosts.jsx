@@ -2,8 +2,8 @@ import React from 'react';
 import './MyPosts.css';
 import Post from './post/Post';
 
-const MyPosts = ({postMessages}) => {
-	const elementPostMessages = postMessages.map(item => {
+const MyPosts = (props) => {
+	const elementPostMessages = props.postMessages.map(item => {
 		const { id, message, like } = item;
 		return <Post key={id} like={like} message={message}/>
 	});
