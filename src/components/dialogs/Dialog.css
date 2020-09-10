@@ -1,10 +1,6 @@
 .dialog {
-    /* display: grid;
-    grid-template-columns: 1fr 1fr; */
     display: flex;
-    flex-direction: row;
-    /* justify-content: space-between; */
-
+    background-color: rgb(248, 250, 246);
 }
 
 .dialog-item a {
@@ -17,12 +13,13 @@
     text-decoration: none;
 }
 
-.messages {
+/* .messages {
     margin-top: 3px;
+    min-height: 40px;
+} */
+.dialog-item {
+    display: flex;
+    flex-direction: column;
 }
 
-/* .dialog-item {
-    display: flex;
-    flex-wrap: wrap;
-} */
 

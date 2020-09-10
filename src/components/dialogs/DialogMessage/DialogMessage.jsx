@@ -1,15 +1,15 @@
-import React from 'react';
-import './DialogMessage.css';
+// import React from 'react';
+// import './DialogMessage.css';
 
-const DialogMessage = (props) => {
-    return (
-        <div class="bubble">
-            <div class="bubble-in">
-                <div className="messages-item">{props.message}</div>
-            </div>
-        </div>
+// const DialogMessage = (props) => {
+//     return (
+//         <div></div>
+//         // <div className="bubble">
+//         //     <div className="bubble-in">
+//         //         <div className="messages-item">{props.message}</div>
+//         //     </div>
+//         // </div>
+//     )
+// };
 
-    )
-};
-
-export default DialogMessage;
+// export default DialogMessage;

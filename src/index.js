@@ -9,7 +9,8 @@ ReactDOM.render(
 	<React.StrictMode>
 		<App
 			postMessages={state.postsPage.postMessages}
-			stateDialog={state.dialogPage}/>
+			stateDialog={state.dialogPage}
+			stateFriends={state.friendsBox}/>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
