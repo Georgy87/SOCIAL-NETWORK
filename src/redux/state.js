@@ -9,7 +9,7 @@ let state = {
     dialogPage: {
         dialogNames: [
 			{ name: "Andrey", id: "1", message: "Hdfsdfls;dlfk" },
-			{ name: "Ivan", id: "2" ,  message: "Howj"},
+			{ name: "Ivan", id: "2" ,  message: "Howj dld"},
 			{ name: "Gosha", id: "3" ,  message: "Ho"},
 			{ name: "Svetlana", id: "4",  message: "Fucdfdks;;dlkf dl;s'd;lfsd fdfl;sd"},
 			{ name: "Ruslan", id: "5" , message: "Fuck"},

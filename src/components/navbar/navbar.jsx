@@ -1,21 +1,13 @@
 import React from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-
-
+import Friends from "./friends/Friends";
 
 const Navbar = (props) => {
 
     const elementFriends = props.stateFriends.friends.map(item => {
         const { name, id, url } = item;
-        return (
-            <div>
-                <div key={id} className="friends-item">
-                        <img src={url} alt=""/>
-                        <div>{name}</div>
-                </div>
-            </div>
-        )
+        return <Friends name={name} key={id} url={url}/>
     });
 
     return (
