@@ -2,4 +2,9 @@ a.active {
     color: orange;
 }
 
+.dialog-item img {
+    width: 40px;
+    margin: 20px;
+}
+
 

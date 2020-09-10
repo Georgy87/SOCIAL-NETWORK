@@ -1,6 +1,10 @@
 .dialog {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+
 }
 
 .dialog-item a {
@@ -12,4 +16,13 @@
 .dialog-item a:hover {
     text-decoration: none;
 }
+
+.messages {
+    margin-top: 3px;
+}
+
+/* .dialog-item {
+    display: flex;
+    flex-wrap: wrap;
+} */
 

@@ -15,9 +15,11 @@ let state = {
 			{ name: "Ruslan", id: "5" },
         ],
         dialogMessages: [
-            { message: "Hello", id: "1" },
-            { message: "How are you", id: "2" },
+            { message: "Hed", id: "1" },
+            { message: "Howjs", id: "2" },
             { message: "Good! Thanks", id: "3" },
+            { message: "Fuck", id: "4" },
+            { message: "Wow", id: "5" },
         ]
     },
 }
