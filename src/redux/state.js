@@ -6,7 +6,8 @@ let state = {
             { id: "1", message: "Keep your presence fresh on Google.", like: "5" },
             { id: "2",  message: "Get verified and start posting today.", like: "1" },
             { id: "3", message: "Your audience is searching for you. Get verified on Google and amplify your brand.", like: "2" }
-        ]
+        ],
+        text: 'Hello'
     },
     dialogPage: {
         dialogNames: [
@@ -16,6 +17,7 @@ let state = {
 			{ name: "Svetlana", id: "4",  message: "Fucdfdks;;dlkf dl;s'd;lfsd fdfl;ssjdkflskdjfslkdjfslkdjfsjhdjkfhsjdhfksjhdkfjshdkjhfskdjfhskdjhfjshdfkjshdkfjhskdjfhskjhdfksjhdkjfshkdjfhskdhfksdjhfjksdhfd"},
 			{ name: "Ruslan", id: "5" , message: "Fuck"},
         ],
+
         // dialogMessages: [
         //     { message: "Heddfsdfkss", id: "1" },
         //     { message: "Howjs", id: "2" },
@@ -37,13 +39,12 @@ let state = {
             }
         ]
     },
-    text: ''
 }
 
 export let addPost = () => {
     const newPost = {
         id: "4",
-        message: state.text,
+        message: state.postsPage.postMessages.text ,
         like: "10"
     }
     state.postsPage.postMessages.push(newPost);
@@ -51,8 +52,7 @@ export let addPost = () => {
 }
 
 export let changeText = (text) => {
-    state.text = text;
-    console.log(state.text);
+    state.postsPage.postMessages.text = text;
 }
 
 export default state;

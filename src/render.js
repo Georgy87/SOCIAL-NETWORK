@@ -12,7 +12,7 @@ export let renderTree = (props) => {
 		<React.StrictMode>
 			<App
 				changeText={changeText}
-				postMessages={props.postsPage.postMessages}
+				postsPage={props.postsPage}
 				stateDialog={props.dialogPage}
 				stateFriends={props.friendsBox}
                 addPost={addPost}/>
