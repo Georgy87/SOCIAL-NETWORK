@@ -10,6 +10,7 @@ import { changeText } from './redux/state';
 import state, { subscribe } from './redux/state';
 
 export let renderTree = (state) => {
+    console.log(addPost);
 	ReactDOM.render(
 		<React.StrictMode>
 			<App
