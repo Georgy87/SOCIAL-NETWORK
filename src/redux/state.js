@@ -1,4 +1,6 @@
-import { renderTree } from '../render';
+let renderTree = () => {
+    return  console.log('hello');
+}
 
 let state = {
     postsPage: {
@@ -54,5 +56,10 @@ export let addPost = () => {
 export let changeText = (text) => {
     state.postsPage.postMessages.text = text;
 }
+
+export let subscribe = (observe) => {
+    renderTree = observe;  //паттерн наблюдатель!!!
+    console.log(observe);
+};
 
 export default state;
