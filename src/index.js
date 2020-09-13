@@ -5,25 +5,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { addPost } from './redux/state';
-import { changeText } from './redux/state';
-import state, { subscribe } from './redux/state';
+import store from './redux/state';
 
 export let renderTree = (state) => {
-    console.log(addPost);
+
 	ReactDOM.render(
 		<React.StrictMode>
 			<App
-				changeText={changeText}
+				changeText={store._changeText.bind(store)}
 				postsPage={state.postsPage}
 				stateDialog={state.dialogPage}
 				stateFriends={state.friendsBox}
-                addPost={addPost}/>
+                addPost={store._addPost.bind(store)}/>
 		</React.StrictMode>,
 		document.getElementById('root')
 	);
 }
 serviceWorker.unregister();
-renderTree(state);
-subscribe(renderTree);
+renderTree(store._state);
+store._subscribe(renderTree);
 

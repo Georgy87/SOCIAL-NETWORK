@@ -3,7 +3,7 @@ import './MyPosts.css';
 import Post from './post/Post';
 
 const MyPosts = (props) => {
-
+	console.log(props)
 	const elementPostMessages = props.postsPage.postMessages.map(item => {
 		const { id, message, like } = item;
 

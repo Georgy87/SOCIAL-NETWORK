@@ -8,7 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './app.css';
 const App = (props) => {
-
+	console.log(props);
 	const elementProfile = () => <Profile postsPage={props.postsPage} addPost={props.addPost} changeText={props.changeText}/>;
 	const elementDialog = () => <Dialog stateDialog={props.stateDialog}/>;
 

@@ -1,6 +1,6 @@
 
 let store = {
-    state: {
+    _state: {
             postsPage: {
                 postMessages: [
                     { id: "1", message: "Keep your presence fresh on Google.", like: "5" },
@@ -33,41 +33,42 @@ let store = {
             },
         },
 
-        renderTree() {
+        _renderTree() {
             return  console.log('hello');
         },
 
         _addPost() {
             const newPost = {
                 id: "4",
-                message: this.state.postsPage.postMessages.text,
+                message: this._state.postsPage.text,
                 like: "10"
             }
 
-            this.state.postsPage.postMessages.push(newPost);
-            this.renderTree(this.state);
+            this._state.postsPage.postMessages.push(newPost);
+            this._renderTree(this._state);
         },
 
         _changeText(text) {
-            this.state.postsPage.postMessages.text = text;
+            console.log(this);
+            this._state.postsPage.text = text;
         },
 
         _subscribe(observe) {
-            this.renderTree = observe;  // Паттерн наблюдатель!!!
+            this._renderTree = observe;  // Паттерн наблюдатель!!!
         }
 
 }
 
-export let addPost = () => {
-    return store._addPost();
-}
+// export let addPost = () => {
+//     return store._addPost();
+// }
 
-export let changeText = (text) => {
-    return store._changeText(text);
-}
+// export let changeText = (text) => {
+//     return store._changeText(text);
+// }
 
-export let subscribe = (observe) => {
-    return store._subscribe(observe);  // Паттерн наблюдатель!!!
-};
+// export let subscribe = (observe) => {
+//     return store._subscribe(observe);  // Паттерн наблюдатель!!!
+// };
 
-export default store.state;
+export default store;
