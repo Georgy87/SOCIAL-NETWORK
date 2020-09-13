@@ -3,7 +3,7 @@ import './MyPosts.css';
 import Post from './post/Post';
 
 const MyPosts = (props) => {
-	console.log(props)
+
 	const elementPostMessages = props.postsPage.postMessages.map(item => {
 		const { id, message, like } = item;
 
@@ -11,7 +11,11 @@ const MyPosts = (props) => {
 	});
 
 	const changeInput = (e) => {
-		props.changeText(e.target.value);
+		props.dispatch({type: 'ADD-TEXT', newText: e.target.value})
+	}
+
+	const addPost = () => {
+		props.dispatch({type: 'ADD-POST'})
 	}
 
     return (
@@ -20,7 +24,7 @@ const MyPosts = (props) => {
 			<div>
 				<textarea onChange={changeInput} placeholder={props.postsPage.text}/>
 				<div>
-					<button onClick={props.addPost}>Add post</button>
+					<button onClick={addPost}>Add post</button>
 				</div>
 			</div>
 			<div className="posts">

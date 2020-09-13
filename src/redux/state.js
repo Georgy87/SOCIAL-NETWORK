@@ -33,42 +33,39 @@ let store = {
             },
         },
 
+        getState() {
+            return this._state;
+        },
+
         _renderTree() {
             return  console.log('hello');
         },
 
-        _addPost() {
-            const newPost = {
-                id: "4",
-                message: this._state.postsPage.text,
-                like: "10"
+        dispatch(actions) {
+            if (actions.type === 'ADD-POST') {
+                const newPost = {
+                    id: "4",
+                    message: this._state.postsPage.text,
+                    like: "10"
+                }
+
+                this._state.postsPage.postMessages.push(newPost);
+                this._renderTree(this._state);
+            } else if (actions.type === 'ADD-TEXT'){
+                this._state.postsPage.text = actions.newText;
+                
             }
-
-            this._state.postsPage.postMessages.push(newPost);
-            this._renderTree(this._state);
         },
 
-        _changeText(text) {
-            console.log(this);
-            this._state.postsPage.text = text;
-        },
+        // changeText(text) {
+        //     this._state.postsPage.text = text;
+        // },
 
-        _subscribe(observe) {
+        subscribe(observe) {
             this._renderTree = observe;  // Паттерн наблюдатель!!!
         }
 
 }
 
-// export let addPost = () => {
-//     return store._addPost();
-// }
-
-// export let changeText = (text) => {
-//     return store._changeText(text);
-// }
-
-// export let subscribe = (observe) => {
-//     return store._subscribe(observe);  // Паттерн наблюдатель!!!
-// };
 
 export default store;

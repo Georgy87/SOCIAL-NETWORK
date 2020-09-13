@@ -8,20 +8,19 @@ import * as serviceWorker from './serviceWorker';
 import store from './redux/state';
 
 export let renderTree = (state) => {
-
+	console.log(store)
 	ReactDOM.render(
 		<React.StrictMode>
 			<App
-				changeText={store._changeText.bind(store)}
 				postsPage={state.postsPage}
 				stateDialog={state.dialogPage}
 				stateFriends={state.friendsBox}
-                addPost={store._addPost.bind(store)}/>
+                dispatch={store.dispatch.bind(store)}/>
 		</React.StrictMode>,
 		document.getElementById('root')
 	);
 }
 serviceWorker.unregister();
-renderTree(store._state);
-store._subscribe(renderTree);
+renderTree(store.getState());
+store.subscribe(renderTree);
 
