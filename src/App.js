@@ -10,7 +10,7 @@ import './app.css';
 const App = (props) => {
 	console.log(props);
 	const elementProfile = () => <Profile postsPage={props.postsPage} dispatch={props.dispatch} changeText={props.changeText}/>;
-	const elementDialog = () => <Dialog stateDialog={props.stateDialog}/>;
+	const elementDialog = () => <Dialog stateDialog={props.stateDialog} dispatch={props.dispatch} />;
 
   	return (
 		<BrowserRouter>

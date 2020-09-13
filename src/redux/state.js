@@ -7,7 +7,7 @@ let store = {
                     { id: "2",  message: "Get verified and start posting today.", like: "1" },
                     { id: "3", message: "Your audience is searching for you. Get verified on Google and amplify your brand.", like: "2" }
                 ],
-                text: 'Hello'
+                postMessageText: 'Hello'
             },
             dialogPage: {
                 dialogNames: [
@@ -17,6 +17,7 @@ let store = {
                     { name: "Svetlana", id: "4",  message: "Fucdfdks;;dlkf dl;s'd;lfsd fdfl;ssjdkflskdjfslkdjfslkdjfsjhdjkfhsjdhfksjhdkfjshdkjhfskdjfhskdjhfjshdfkjshdkfjhskdjfhskjhdfksjhdkjfshkdjfhskdhfksdjhfjksdhfd"},
                     { name: "Ruslan", id: "5" , message: "Fuck"},
                 ],
+                dialogPageMessageText: ''
             },
             friendsBox: {
                 friends: [
@@ -45,27 +46,35 @@ let store = {
             if (actions.type === 'ADD-POST') {
                 const newPost = {
                     id: "4",
-                    message: this._state.postsPage.text,
+                    message: this._state.postsPage.postMessageText,
                     like: "10"
                 }
-
                 this._state.postsPage.postMessages.push(newPost);
                 this._renderTree(this._state);
+
             } else if (actions.type === 'ADD-TEXT'){
-                this._state.postsPage.text = actions.newText;
-                
+                this._state.postsPage.postMessageText = actions.newText;
+
+            } else if (actions.type === 'ADD-MESSAGE-TEXT') {
+                this._state.dialogPage.dialogPageMessageText = actions.messageText;
+
+            } else if (actions.type === 'ADD-MESSAGE-DIALOG') {
+                const newMessage = {
+                    name: 'Arsen',
+                    id: "6",
+                    message: this._state.dialogPage.dialogPageMessageText,
+                }
+                this._state.dialogPage.dialogNames.push(newMessage);
+                this._renderTree(this._state);
             }
         },
-
-        // changeText(text) {
-        //     this._state.postsPage.text = text;
-        // },
 
         subscribe(observe) {
             this._renderTree = observe;  // Паттерн наблюдатель!!!
         }
 
 }
+console.log(store);
 
 
 export default store;
