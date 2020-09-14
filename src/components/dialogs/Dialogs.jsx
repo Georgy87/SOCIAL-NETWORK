@@ -4,7 +4,7 @@ import DialogItem from './DialogItem/DialogsItem';
 import {Button, FormControl} from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {dispatchDialogMessage,  dispatchDialogText} from '../../redux/state';
+import {dialogMessageActionCreator, dialogTextActionCreator} from '../../redux/state';
 
 const Dialog = (props) => {
     const elementNames =  props.stateDialog.dialogNames.map((item) => {
@@ -13,11 +13,11 @@ const Dialog = (props) => {
     });
 
     const addMessage = () => {
-        props.dispatch(dispatchDialogMessage());
+        props.dispatch(dialogMessageActionCreator());
     }
 
     const addChange = (e) => {
-        props.dispatch(dispatchDialogText(e.target.value));
+        props.dispatch(dialogTextActionCreator(e.target.value));
     }
 
     return (

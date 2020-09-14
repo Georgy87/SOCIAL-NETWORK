@@ -1,9 +1,9 @@
 import React from 'react';
 import './MyPosts.css';
 import Post from './post/Post';
+import { addPostACtionCreator, changeInputACtionCreator } from '../../../redux/state'; the 
 
 const MyPosts = (props) => {
-
 	const elementPostMessages = props.postsPage.postMessages.map(item => {
 		const { id, message, like } = item;
 
@@ -11,11 +11,11 @@ const MyPosts = (props) => {
 	});
 
 	const changeInput = (e) => {
-		props.dispatch({type: 'ADD-TEXT', newText: e.target.value})
+		props.dispatch(changeInputACtionCreator(e.target.value))
 	}
 
 	const addPost = () => {
-		props.dispatch({type: 'ADD-POST'})
+		props.dispatch(addPostACtionCreator())
 	}
 
     return (

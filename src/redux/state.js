@@ -75,13 +75,26 @@ let store = {
 
 }
 
-export const dispatchDialogMessage = () => {
+export const addPostACtionCreator = () => {
+	return {
+		type: 'ADD-POST'
+	}
+}
+
+export const  changeInputACtionCreator = (text) => {
+	return {
+		type: 'ADD-TEXT',
+		newText: text
+	}
+}
+
+export const dialogMessageActionCreator = () => {
     return {
         type: 'ADD-MESSAGE-DIALOG'
     }
 }
 
-export const dispatchDialogText = (text) => {
+export const dialogTextActionCreator = (text) => {
     return {
         type: 'ADD-MESSAGE-TEXT',
         messageText: text
