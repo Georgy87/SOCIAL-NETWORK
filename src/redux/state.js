@@ -74,7 +74,18 @@ let store = {
         }
 
 }
-console.log(store);
 
+export const dispatchDialogMessage = () => {
+    return {
+        type: 'ADD-MESSAGE-DIALOG'
+    }
+}
+
+export const dispatchDialogText = (text) => {
+    return {
+        type: 'ADD-MESSAGE-TEXT',
+        messageText: text
+    }
+}
 
 export default store;
