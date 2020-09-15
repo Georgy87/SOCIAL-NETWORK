@@ -19,7 +19,8 @@ export let renderTree = (state) => {
 		document.getElementById('root')
 	);
 }
-serviceWorker.unregister();
 renderTree(store.getState());
 store.subscribe(renderTree);
+serviceWorker.unregister();
+
 

@@ -48,36 +48,36 @@ let store = {
         },
 
         dispatch(actions) {
-            if (actions.type === 'ADD-POST') {
-                const newPost = {
-                    id: "4",
-                    message: this._state.postsPage.postMessageText,
-                    like: "10"
-                }
-                this._state.postsPage.postMessages.push(newPost);
-                this._renderTree(this._state);
+            // if (actions.type === 'ADD-POST') {
+            //     const newPost = {
+            //         id: "4",
+            //         message: this._state.postsPage.postMessageText,
+            //         like: "10"
+            //     }
+            //     this._state.postsPage.postMessages.push(newPost);
+            //     this._renderTree(this._state);
 
-            } else if (actions.type === 'ADD-TEXT'){
-                this._state.postsPage.postMessageText = actions.newText;
-                this._renderTree(this._state);
+            // } else if (actions.type === 'ADD-TEXT'){
+            //     this._state.postsPage.postMessageText = actions.newText;
+            //     this._renderTree(this._state);
 
-            } else if (actions.type === 'ADD-MESSAGE-TEXT') {
-                this._state.dialogPage.dialogPageMessageText = actions.messageText;
-                this._renderTree(this._state);
+            // } else if (actions.type === 'ADD-MESSAGE-TEXT') {
+            //     this._state.dialogPage.dialogPageMessageText = actions.messageText;
+            //     this._renderTree(this._state);
 
-            } else if (actions.type === 'ADD-MESSAGE-DIALOG') {
-                const newMessage = {
-                    name: 'Arsen',
-                    id: "6",
-                    message: this._state.dialogPage.dialogPageMessageText,
-                }
-                this._state.dialogPage.dialogNames.push(newMessage);
-                this._renderTree(this._state);
-            }
-            // this._state.postsPage = ProfileReducer(this._state.postsPage, actions);
-            // this._state.dialogPage = DialogReducer(this._state.dialogPage, actions);
-            // console.log(this._state);
-            // this._renderTree(this._state);
+            // } else if (actions.type === 'ADD-MESSAGE-DIALOG') {
+            //     const newMessage = {
+            //         name: 'Arsen',
+            //         id: "6",
+            //         message: this._state.dialogPage.dialogPageMessageText,
+            //     }
+            //     this._state.dialogPage.dialogNames.push(newMessage);
+            //     this._renderTree(this._state);
+            // }
+            
+            this._state.postsPage = ProfileReducer(this._state.postsPage, actions);
+            this._state.dialogPage = DialogReducer(this._state.dialogPage, actions);
+            this._renderTree(this._state);
         },
 
 
@@ -89,12 +89,12 @@ export const addPostACtionCreator = () => {
 	}
 }
 
-export const changeInputACtionCreator = (text) => {
-	return {
+export const changeInputACtionCreator = (text) => ({
+
 		type: 'ADD-TEXT',
 		newText: text
-	}
-}
+
+})
 
 export const dialogMessageActionCreator = () => {
     return {

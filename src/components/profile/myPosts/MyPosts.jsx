@@ -10,10 +10,14 @@ const MyPosts = (props) => {
 		return <Post key={id} like={like} message={message}/>
 	});
 
-	const changeInput = (e) => {
-		let text = e.target.value;
+	let newPostElement = React.createRef();
 
-		props.dispatch(changeInputACtionCreator(text))
+	let changeInput = (e) => {
+
+		// let text = e.target.value;
+		let text = newPostElement.current.value;
+		
+		props.dispatch(changeInputACtionCreator(text));
 	}
 
 	const addPost = () => {
@@ -24,7 +28,7 @@ const MyPosts = (props) => {
 		<div className="post-wrapper">
 			My post
 			<div>
-				<textarea onChange={changeInput} />
+				<textarea onChange={changeInput} ref={newPostElement} value={props.newPostText}/>
 				<div>
 					<button onClick={addPost}>Add post</button>
 				</div>
