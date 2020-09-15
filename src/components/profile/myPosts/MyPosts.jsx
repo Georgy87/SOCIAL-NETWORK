@@ -1,7 +1,7 @@
 import React from 'react';
 import './MyPosts.css';
 import Post from './post/Post';
-import { addPostACtionCreator, changeInputACtionCreator } from '../../../redux/state'; the 
+import { addPostACtionCreator, changeInputACtionCreator } from '../../../redux/state';
 
 const MyPosts = (props) => {
 	const elementPostMessages = props.postsPage.postMessages.map(item => {
@@ -11,18 +11,20 @@ const MyPosts = (props) => {
 	});
 
 	const changeInput = (e) => {
-		props.dispatch(changeInputACtionCreator(e.target.value))
+		let text = e.target.value;
+
+		props.dispatch(changeInputACtionCreator(text))
 	}
 
 	const addPost = () => {
-		props.dispatch(addPostACtionCreator())
+		props.dispatch(addPostACtionCreator());
 	}
 
     return (
 		<div className="post-wrapper">
 			My post
 			<div>
-				<textarea onChange={changeInput} placeholder={props.postsPage.text}/>
+				<textarea onChange={changeInput} />
 				<div>
 					<button onClick={addPost}>Add post</button>
 				</div>

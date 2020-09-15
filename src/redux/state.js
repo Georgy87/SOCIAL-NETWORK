@@ -1,3 +1,5 @@
+import ProfileReducer from '../redux/profile-reducer';
+import DialogReducer from '../redux/dialog-reducer';
 
 let store = {
     _state: {
@@ -7,7 +9,7 @@ let store = {
                     { id: "2",  message: "Get verified and start posting today.", like: "1" },
                     { id: "3", message: "Your audience is searching for you. Get verified on Google and amplify your brand.", like: "2" }
                 ],
-                postMessageText: 'Hello'
+                postMessageText: ''
             },
             dialogPage: {
                 dialogNames: [
@@ -41,6 +43,9 @@ let store = {
         _renderTree() {
             return  console.log('hello');
         },
+        subscribe(observe) {
+            this._renderTree = observe;  // Паттерн наблюдатель!!!
+        },
 
         dispatch(actions) {
             if (actions.type === 'ADD-POST') {
@@ -54,9 +59,11 @@ let store = {
 
             } else if (actions.type === 'ADD-TEXT'){
                 this._state.postsPage.postMessageText = actions.newText;
+                this._renderTree(this._state);
 
             } else if (actions.type === 'ADD-MESSAGE-TEXT') {
                 this._state.dialogPage.dialogPageMessageText = actions.messageText;
+                this._renderTree(this._state);
 
             } else if (actions.type === 'ADD-MESSAGE-DIALOG') {
                 const newMessage = {
@@ -67,11 +74,12 @@ let store = {
                 this._state.dialogPage.dialogNames.push(newMessage);
                 this._renderTree(this._state);
             }
+            // this._state.postsPage = ProfileReducer(this._state.postsPage, actions);
+            // this._state.dialogPage = DialogReducer(this._state.dialogPage, actions);
+            // console.log(this._state);
+            // this._renderTree(this._state);
         },
 
-        subscribe(observe) {
-            this._renderTree = observe;  // Паттерн наблюдатель!!!
-        }
 
 }
 
@@ -81,7 +89,7 @@ export const addPostACtionCreator = () => {
 	}
 }
 
-export const  changeInputACtionCreator = (text) => {
+export const changeInputACtionCreator = (text) => {
 	return {
 		type: 'ADD-TEXT',
 		newText: text
