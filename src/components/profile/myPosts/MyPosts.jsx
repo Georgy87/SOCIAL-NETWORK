@@ -1,7 +1,7 @@
 import React from 'react';
 import './MyPosts.css';
 import Post from './post/Post';
-import { addPostACtionCreator, changeInputACtionCreator } from '../../../redux/state';
+import { addPostACtionCreator, changeInputACtionCreator } from '../../../redux/profile-reducer';
 
 const MyPosts = (props) => {
 	const elementPostMessages = props.postsPage.postMessages.map(item => {
@@ -10,14 +10,8 @@ const MyPosts = (props) => {
 		return <Post key={id} like={like} message={message}/>
 	});
 
-	let newPostElement = React.createRef();
-
 	let changeInput = (e) => {
-
-		// let text = e.target.value;
-		let text = newPostElement.current.value;
-		
-		props.dispatch(changeInputACtionCreator(text));
+		props.dispatch(changeInputACtionCreator(e.target.value));
 	}
 
 	const addPost = () => {
@@ -28,7 +22,7 @@ const MyPosts = (props) => {
 		<div className="post-wrapper">
 			My post
 			<div>
-				<textarea onChange={changeInput} ref={newPostElement} value={props.newPostText}/>
+				<textarea onChange={changeInput} value={props.newPostText}/>
 				<div>
 					<button onClick={addPost}>Add post</button>
 				</div>

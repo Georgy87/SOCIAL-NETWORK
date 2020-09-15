@@ -4,7 +4,7 @@ import DialogItem from './DialogItem/DialogsItem';
 import {Button, FormControl} from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {dialogMessageActionCreator, dialogTextActionCreator} from '../../redux/state';
+import {dialogMessageActionCreator, dialogTextActionCreator} from '../../redux/dialog-reducer';
 
 const Dialog = (props) => {
     const elementNames =  props.stateDialog.dialogNames.map((item) => {
