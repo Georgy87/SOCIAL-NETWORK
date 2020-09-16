@@ -4,9 +4,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import store from "./redux/state";
+import store from "./redux/redux-store";
 
 export let renderTree = (state) => {
+    console.log(state);
     ReactDOM.render(
         <React.StrictMode>
             <App
@@ -20,5 +21,8 @@ export let renderTree = (state) => {
     );
 };
 renderTree(store.getState());
-store.subscribe(renderTree);
+store.subscribe(() => {
+    const state = store.getState();
+    renderTree(state);
+});
 serviceWorker.unregister();

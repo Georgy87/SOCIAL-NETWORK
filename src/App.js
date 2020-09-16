@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./app.css";
 const App = (props) => {
+    console.log(props);
     const elementProfile = () => (
         <Profile
             postsPage={props.postsPage}
@@ -23,7 +24,7 @@ const App = (props) => {
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header />
-                <Navbar stateFriends={props.stateFriends} />
+                <Navbar  stateFriends={props.stateFriends} />
                 <div className="app-wrapper-content">
                     <Route path="/profile" render={elementProfile} />
                     <Route path="/dialog" render={elementDialog} />
