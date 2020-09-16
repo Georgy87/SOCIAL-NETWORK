@@ -8,12 +8,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./app.css";
 const App = (props) => {
-    console.log(props);
+    console.log(props.store.getState());
     const elementProfile = () => (
         <Profile
+            store={props.store}
             postsPage={props.postsPage}
             dispatch={props.dispatch}
-            changeText={props.changeText}
+            // changeText={props.changeText}
         />
     );
     const elementDialog = () => (

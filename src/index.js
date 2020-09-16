@@ -7,10 +7,10 @@ import * as serviceWorker from "./serviceWorker";
 import store from "./redux/redux-store";
 
 export let renderTree = (state) => {
-    console.log(state);
     ReactDOM.render(
         <React.StrictMode>
             <App
+                store={store}
                 postsPage={state.postsPage}
                 stateDialog={state.dialogPage}
                 stateFriends={state.friendsBox}
@@ -21,6 +21,7 @@ export let renderTree = (state) => {
     );
 };
 renderTree(store.getState());
+
 store.subscribe(() => {
     const state = store.getState();
     renderTree(state);
