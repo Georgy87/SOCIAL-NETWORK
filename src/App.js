@@ -2,23 +2,19 @@ import React from "react";
 import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
 import Profile from "./components/profile/Profile";
-import Dialog from "./components/dialogs/Dialogs";
+import DialogContainer from "./components/dialogs/DialogsContainer";
 import { Route, BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./app.css";
 const App = (props) => {
-    console.log(props.store.getState());
     const elementProfile = () => (
         <Profile
             store={props.store}
-            postsPage={props.postsPage}
-            dispatch={props.dispatch}
-            // changeText={props.changeText}
         />
     );
     const elementDialog = () => (
-        <Dialog stateDialog={props.stateDialog} dispatch={props.dispatch} />
+        <DialogContainer store={props.store}/>
     );
 
     return (
