@@ -1,13 +1,13 @@
 import React from "react";
 import "./Navbar.css";
 import { NavLink } from "react-router-dom";
-import Friends from "./friends/Friends";
+// import Friends from "./friends/Friends";
 
 const Navbar = (props) => {
-    const elementFriends = props.stateFriends.friends.map(item => {
-        const { name, id, url } = item;
-        return <Friends name={name} key={id} url={url}/>
-    });
+    // const elementFriends = props.stateFriends.friends.map(item => {
+    //     const { name, id, url } = item;
+    //     return <Friends name={name} key={id} url={url}/>
+    // });
 
     return (
         <nav className="navbar-wrapper">
@@ -26,7 +26,7 @@ const Navbar = (props) => {
                     Friends
                 </div>
                 <div className="friends-content">
-                    {elementFriends}
+                    {/* {elementFriends} */}
                 </div>
             </div>
         </nav>

@@ -1,35 +1,35 @@
-import React from "react";
-import MyPosts from "./MyPosts";
-import StoreContext from "../../../Context";
-import {
-    addPostACtionCreator,
-    changeInputACtionCreator,
-} from "../../../redux/profile-reducer";
+// import React from "react";
+// import MyPosts from "./MyPosts";
 
-const MyPostsContainer = () => {
-    return (
-        <StoreContext.Consumer>
-            {(store) => {
-                const state = store.getState();
+// import {
+//     addPostACtionCreator,
+//     changeInputACtionCreator,
+// } from "../../../redux/profile-reducer";
 
-                let changeInput = (text) => {
-                    store.dispatch(changeInputACtionCreator(text));
-                };
+// const MyPostsContainer = () => {
+//     return (
+//         <StoreContext.Consumer>
+//             {(store) => {
+//                 const state = store.getState();
 
-                const addPost = () => {
-                    store.dispatch(addPostACtionCreator());
-                };
+//                 let changeInput = (text) => {
+//                     store.dispatch(changeInputACtionCreator(text));
+//                 };
 
-                return (
-                    <MyPosts
-                        addPost={addPost}
-                        changeInput={changeInput}
-                        postsPage={state.postsPage}
-                    />
-                );
-            }}
-        </StoreContext.Consumer>
-    );
-};
+//                 const addPost = () => {
+//                     store.dispatch(addPostACtionCreator());
+//                 };
 
-export default MyPostsContainer;
+//                 return (
+//                     <MyPosts
+//                         addPost={addPost}
+//                         changeInput={changeInput}
+//                         postsPage={state.postsPage}
+//                     />
+//                 );
+//             }}
+//         </StoreContext.Consumer>
+//     );
+// };
+
+// export default MyPostsContainer;
