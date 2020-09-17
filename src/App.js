@@ -9,12 +9,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
 const App = (props) => {
     const elementProfile = () => (
-        <Profile
-            store={props.store}
-        />
+        <Profile />
     );
     const elementDialog = () => (
-        <DialogContainer store={props.store}/>
+        <DialogContainer />
     );
 
     return (

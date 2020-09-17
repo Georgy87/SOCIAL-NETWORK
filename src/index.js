@@ -5,17 +5,17 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import store from "./redux/redux-store";
+import StoreContext from "./Context";
 
 export let renderTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App
-                store={store}
-                postsPage={state.postsPage}
-                stateDialog={state.dialogPage}
-                stateFriends={state.friendsBox}
-                dispatch={store.dispatch.bind(store)}
-            />
+            <StoreContext.Provider value={store}>
+                <App
+                    store={store}
+                    stateFriends={state.friendsBox}
+                />
+            </StoreContext.Provider>
         </React.StrictMode>,
         document.getElementById("root")
     );
