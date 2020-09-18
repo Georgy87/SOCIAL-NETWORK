@@ -8,21 +8,26 @@ let initialState = {
 }
 const ProfileReducer = (state = initialState, actions) => {
     switch (actions.type) {
-        case "ADD-POST":
+        case "ADD-POST": {
             const newPost = {
                 id: "4",
                 message: state.postMessageText,
                 like: "10",
             };
-            state.postMessages.push(newPost);
-            break;
-        case "ADD-TEXT":
-            state.postMessageText = actions.newText;
-            break;
-        default:
+            let newState = {...state};
+            newState.postMessages = [...state.postMessages];
+            newState.postMessageText = '';
+            newState.postMessages.push(newPost);
+            return newState;
+        }
+        case "ADD-TEXT": {
+            let newState = {...state};
+            newState.postMessageText = actions.newText;
+            return newState;
+        }
+        default :
+            return state;
     }
-
-    return state;
 };
 
 export const addPostACtionCreator = () => {

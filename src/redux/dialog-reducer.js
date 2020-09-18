@@ -8,22 +8,31 @@ let initialState = {
     ],
     dialogPageMessageText: ''
 }
+
 const DialogReducer = (state = initialState, actions) => {
+
     switch (actions.type) {
-        case "ADD-MESSAGE-TEXT":
-            state.dialogPageMessageText = actions.messageText;
-            break;
-        case "ADD-MESSAGE-DIALOG":
-            const newMessage = {
+        case "ADD-MESSAGE-TEXT": {
+            let newState = {...state};
+            newState.dialogPageMessageText = actions.messageText;
+            return newState;
+        }
+        case "ADD-MESSAGE-DIALOG": {
+            let newMessage = {
                 name: "Arsen",
                 id: "6",
                 message: state.dialogPageMessageText,
             };
-            state.dialogNames.push(newMessage);
-            break;
+
+            let newState = {...state};
+            newState.dialogNames = [...state.dialogNames];
+            newState.dialogPageMessageText = '';
+            newState.dialogNames.push(newMessage);
+            return newState;
+        }
         default:
+            return state;
     }
-    return state;
 };
 
 export const dialogMessageActionCreator = () => {

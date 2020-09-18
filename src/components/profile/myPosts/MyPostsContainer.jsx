@@ -1,35 +1,28 @@
-// import React from "react";
-// import MyPosts from "./MyPosts";
+import React from "react";
+import MyPosts from "./MyPosts";
+import {
+    addPostACtionCreator,
+    changeInputACtionCreator,
+} from "../../../redux/profile-reducer";
+import { connect } from "react-redux";
 
-// import {
-//     addPostACtionCreator,
-//     changeInputACtionCreator,
-// } from "../../../redux/profile-reducer";
+const mapStateToProps = (state) => {
+    return {
+        postsPage: state.postsPage,
+    };
+};
 
-// const MyPostsContainer = () => {
-//     return (
-//         <StoreContext.Consumer>
-//             {(store) => {
-//                 const state = store.getState();
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addPost: () => {
+            dispatch(addPostACtionCreator());
+        },
 
-//                 let changeInput = (text) => {
-//                     store.dispatch(changeInputACtionCreator(text));
-//                 };
+        changeInput: (text) => {
+            dispatch(changeInputACtionCreator(text));
+        },
+    };
+};
+const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
-//                 const addPost = () => {
-//                     store.dispatch(addPostACtionCreator());
-//                 };
-
-//                 return (
-//                     <MyPosts
-//                         addPost={addPost}
-//                         changeInput={changeInput}
-//                         postsPage={state.postsPage}
-//                     />
-//                 );
-//             }}
-//         </StoreContext.Consumer>
-//     );
-// };
-
-// export default MyPostsContainer;
+export default MyPostsContainer;

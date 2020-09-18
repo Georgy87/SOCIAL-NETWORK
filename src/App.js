@@ -9,22 +9,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./app.css";
 
 const App = () => {
-    // const elementProfile = () => (
-    //     <Profile />
-    // );
-    const elementDialog = () => (
-        <DialogContainer />
-    );
+    const elementProfile = () => <Profile />;
+    const elementDialog = () => <DialogContainer />;
 
     return (
-            <div className="app-wrapper">
-                <Header />
-                <Navbar  />
-                <div className="app-wrapper-content">
-                    {/* <Route path="/profile" render={elementProfile} /> */}
-                    <Route path="/dialog" render={elementDialog} />
-                </div>
+        <div className="app-wrapper">
+            <Header />
+            <Navbar />
+            <div className="app-wrapper-content">
+                <Route path="/profile" render={elementProfile} />
+                <Route path="/dialog" render={elementDialog} />
             </div>
+        </div>
     );
 };
 
