@@ -14,16 +14,18 @@ const ProfileReducer = (state = initialState, actions) => {
                 message: state.postMessageText,
                 like: "10",
             };
-            let newState = {...state};
-            newState.postMessages = [...state.postMessages];
-            newState.postMessageText = '';
-            newState.postMessages.push(newPost);
-            return newState;
+
+            return  {
+                ...state,
+                postMessages: [...state.postMessages, newPost],
+            };
         }
         case "ADD-TEXT": {
-            let newState = {...state};
-            newState.postMessageText = actions.newText;
-            return newState;
+            
+            return  {
+                ...state,
+                postMessageText: actions.newText,
+            };
         }
         default :
             return state;
