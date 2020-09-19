@@ -7,6 +7,7 @@ import {
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
         state: state.dialogPage,
     };

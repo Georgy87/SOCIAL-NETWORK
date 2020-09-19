@@ -28,6 +28,7 @@ const DialogReducer = (state = initialState, actions) => {
             return {
                 ...state,
                 dialogNames: [...state.dialogNames, newMessage],
+                dialogPageMessageText: ''
             };
         }
         default:

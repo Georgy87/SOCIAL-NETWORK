@@ -17,6 +17,11 @@ const Navbar = (props) => {
                     Messages
                 </NavLink>
             </div>
+            <div className="navbar-item">
+                <NavLink to="/users" activeClassName="activeLink">
+                    Users
+                </NavLink>
+            </div>
             <div className="friends-wrapper">
                 <div className="friends-title">
                     Friends
