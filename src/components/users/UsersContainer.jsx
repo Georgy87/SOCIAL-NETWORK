@@ -6,12 +6,18 @@ import { followActionCreator, unfollowActionCreator } from "../../redux/users-re
 const mapStateToProps = (state) => {
     console.log(state);
     return {
-        users: state.usersPage
+        usersPage: state.usersPage
     }
 }
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
     return {
+        follow: (id) => {
+            dispatch(followActionCreator(id))
+        },
+        unfollow: (id) => {
+            dispatch(unfollowActionCreator(id))
+        },
 
     }
 }

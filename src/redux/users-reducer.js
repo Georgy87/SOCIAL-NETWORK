@@ -1,18 +1,20 @@
 const initialState = {
     users: [
-        { id: 1, name: "Anton", followed: true },
-        { id: 2, name: "Evgeniy", followed: false },
-        { id: 3, name: "Helena", followed: false },
+        { id: 1, name: "Anton", followed: true, text: "follow" },
+        { id: 2, name: "Evgeniy", followed: false, text: "unfollow"  },
+        { id: 3, name: "Helena", followed: false, text: "unfollow"  },
     ],
 };
 
 const UsersReducer = (state = initialState, actions) => {
+    console.log(state)
     switch (actions.type) {
         case "follow": {
             return {
                 ...state,
                 users: state.users.map((user) => {
-                    if (user.id === actions.id) {
+                    if (user.id === actions.userId) {
+                        console.log(user.id)
                         return { ...user, followed: true };
                     }
                     return user;
@@ -23,7 +25,7 @@ const UsersReducer = (state = initialState, actions) => {
             return {
                 ...state,
                 users: state.users.map((user) => {
-                    if (user.id === actions.id) {
+                    if (user.id === actions.userId) {
                         return { ...user, followed: false };
                     }
                     return user;
@@ -36,6 +38,7 @@ const UsersReducer = (state = initialState, actions) => {
 };
 
 export const followActionCreator = (id) => {
+    console.log(id);
     return {
         type: "follow",
         userId: id,
@@ -43,6 +46,7 @@ export const followActionCreator = (id) => {
 };
 
 export const unfollowActionCreator = (id) => {
+    console.log(id)
     return {
         type: "unfollow",
         userId: id,
