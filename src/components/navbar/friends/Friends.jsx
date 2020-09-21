@@ -3,7 +3,6 @@ import "./Friends.css";
 
 const Friends = (props) => {
     const elementFriends = props.state.friends.map((item) => {
-        console.log(item);
         const { name, id, url } = item;
         return <Friend name={name} key={id} url={url} />;
     });
