@@ -2,6 +2,7 @@ import React from "react";
 
 const UsersItem = (props) => {
     const { user, store, text } = props;
+    
     const changeFollowUnfollow = () => {
         if (user.followed === true) {
             store.unfollow(user.id);

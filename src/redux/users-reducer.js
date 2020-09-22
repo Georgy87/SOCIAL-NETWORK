@@ -1,11 +1,9 @@
 const initialState = {
     users: [
-        { id: 1, name: "Anton", followed: true, text: "follow" },
-        { id: 2, name: "Evgeniy", followed: false, text: "unfollow"  },
-        { id: 3, name: "Helena", followed: false, text: "unfollow"  },
+
     ],
 };
-
+console.log(initialState)
 const UsersReducer = (state = initialState, actions) => {
     switch (actions.type) {
         case "follow": {
@@ -31,6 +29,13 @@ const UsersReducer = (state = initialState, actions) => {
                 }),
             };
         }
+        case "USERS": {
+            return {
+                ...state,
+                users: [ ...state.users, ...actions.users ]
+            }
+
+        }
         default :
             return state;
     }
@@ -49,5 +54,12 @@ export const unfollowActionCreator = (id) => {
         userId: id,
     };
 };
+
+export const setUsersActionCreator = (user) => {
+    return {
+        type: "USERS",
+        users: user
+    }
+}
 
 export default UsersReducer;
