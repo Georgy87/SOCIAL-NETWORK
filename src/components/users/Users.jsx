@@ -1,17 +1,19 @@
 import React from "react";
-import UsersItem from "./UsersItem";
+import UsersItem from "./UsersItem/UsersItem";
+import * as axios from "axios";
+
 const Users = (props) => {
     const { usersPage } = props;
-    let users = [
-        { id: 1, name: "Anton", followed: true, text: "follow" },
-        { id: 2, name: "Evgeniy", followed: false, text: "unfollow"  },
-        { id: 3, name: "Helena", followed: false, text: "unfollow"  },
-    ]
+
     if (usersPage.users.length === 0) {
-        props.setUsers(users);
+        axios
+            .get("https://social-network.samuraijs.com/api/1.0/users")
+            .then((res) => {
+                props.setUsers(res.data.items);
+            });
     }
 
-    const element = usersPage.users.map(user => {
+    const element = usersPage.users.map((user) => {
         console.log(user);
         return user.followed ? (
             <UsersItem
