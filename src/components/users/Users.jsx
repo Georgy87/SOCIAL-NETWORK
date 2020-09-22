@@ -1,6 +1,7 @@
 import React from "react";
 import UsersItem from "./UsersItem/UsersItem";
 import * as axios from "axios";
+import './Users.css';
 
 const Users = (props) => {
     const { usersPage } = props;
@@ -33,11 +34,13 @@ const Users = (props) => {
     });
 
     return (
-        <div>
-            <div className="dialog-content">{element}</div>
-            <hr />
+        <div className="users">
+            {element}
+
         </div>
     );
 };
+
+
 
 export default Users;
