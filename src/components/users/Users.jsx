@@ -7,16 +7,16 @@ class Users extends Component {
         super(props);
         this.props = props;
     }
+
     componentDidMount() {
         axios
             .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${
-                    this.props.currentPage
-                }
+                `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}
             &count=${this.props.usersPage.pageItems}`
             )
-            .then((res) => {
-                this.props.setUsers(res.data.items);
+            .then(({data}) => {
+                this.props.setUsers(data.items);
+                // this.props.totalItems(data.totalCount)
             });
     }
 
@@ -35,7 +35,7 @@ class Users extends Component {
     render() {
         const { usersPage } = this.props;
 
-        let countPage = Math.ceil(usersPage.totalItems / usersPage.pageItems);
+        const countPage = Math.ceil(usersPage.totalItems / usersPage.pageItems);
         let pages = [];
         for (let i = 1; i <= countPage; i++) {
             pages.push(i);
@@ -43,15 +43,17 @@ class Users extends Component {
 
         const elementPages = pages.map((page) => {
             return (
-                    <div className="pages-items">
-                        <span
-                            className={usersPage.currentPage === page ? "pages" : ""}
-                            key={page}
-                            onClick={() => this.onChangeCount(page)}
-                        >
-                            {page}
-                        </span>
-                    </div>
+                <div className="pages-items">
+                    <span
+                        className={
+                            usersPage.currentPage === page ? "pages" : ""
+                        }
+                        key={page}
+                        onClick={() => this.onChangeCount(page)}
+                    >
+                        {page}
+                    </span>
+                </div>
             );
         });
 
@@ -74,9 +76,7 @@ class Users extends Component {
         });
         return (
             <>
-                <div className="pages-wrap">
-                    {elementPages}
-                </div>
+                <div className="pages-wrap">{elementPages}</div>
                 <div className="users">{element}</div>
             </>
         );

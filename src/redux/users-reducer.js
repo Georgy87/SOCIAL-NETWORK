@@ -2,7 +2,7 @@ const initialState = {
     users: [],
     pageItems: 4,
     currentPage: 1,
-    totalItems: 25
+    totalItems: 100
 };
 
 const UsersReducer = (state = initialState, actions) => {
@@ -43,6 +43,12 @@ const UsersReducer = (state = initialState, actions) => {
                 currentPage: actions.currentPage
             }
         }
+        case "TOTAL-ITEMS": {
+            return {
+                ...state,
+                totalItems: actions.totalItems
+            }
+        }
 
         default :
             return state;
@@ -75,6 +81,14 @@ export const currentPageActionCreator = (page) => {
     return {
         type: "CURRENT-PAGE",
         currentPage: page
+    }
+}
+
+export const totalItemsActionCreator = (total) => {
+    console.log(total);
+    return {
+        type: "TOTAL-ITEMS",
+        totalItems: total
     }
 }
 

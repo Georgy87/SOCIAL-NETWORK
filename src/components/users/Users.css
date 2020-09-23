@@ -5,13 +5,11 @@
 .pages-wrap {
     display: flex;
     justify-content: center;
-
 }
 .pages {
     color: rgb(51, 49, 49);
     font-weight: bold;
 }
-
 .pages-items {
     margin-left: 4px;
     color: rgb(105, 102, 102);
