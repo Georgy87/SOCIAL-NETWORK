@@ -10,8 +10,10 @@ class Users extends Component {
     componentDidMount() {
         axios
             .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}
-                &count=${3}`
+                `https://social-network.samuraijs.com/api/1.0/users?page=${
+                    this.props.currentPage
+                }
+            &count=${this.props.usersPage.pageItems}`
             )
             .then((res) => {
                 this.props.setUsers(res.data.items);
@@ -20,17 +22,37 @@ class Users extends Component {
 
     onChangeCount(page) {
         this.props.currentPage(page);
+        axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${page}
+            &count=${this.props.usersPage.pageItems}`
+            )
+            .then((res) => {
+                this.props.setUsers(res.data.items);
+            });
     }
 
     render() {
         const { usersPage } = this.props;
-        let countPage = usersPage.totalItems / usersPage.pageItems;
+
+        let countPage = Math.ceil(usersPage.totalItems / usersPage.pageItems);
         let pages = [];
-        for (let i = 1; i < countPage; i++) {
+        for (let i = 1; i <= countPage; i++) {
             pages.push(i);
         }
+
         const elementPages = pages.map((page) => {
-            return <span key={page} onClick={() => this.onChangeCount(page)}>{page}</span>;
+            return (
+                    <div className="pages-items">
+                        <span
+                            className={usersPage.currentPage === page ? "pages" : ""}
+                            key={page}
+                            onClick={() => this.onChangeCount(page)}
+                        >
+                            {page}
+                        </span>
+                    </div>
+            );
         });
 
         const element = usersPage.users.map((user) => {
@@ -52,7 +74,9 @@ class Users extends Component {
         });
         return (
             <>
-                {elementPages}
+                <div className="pages-wrap">
+                    {elementPages}
+                </div>
                 <div className="users">{element}</div>
             </>
         );

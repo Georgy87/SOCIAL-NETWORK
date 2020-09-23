@@ -2,9 +2,9 @@ const initialState = {
     users: [],
     pageItems: 4,
     currentPage: 1,
-    totalItems: 20
+    totalItems: 25
 };
-console.log(initialState);
+
 const UsersReducer = (state = initialState, actions) => {
     switch (actions.type) {
         case "follow": {
@@ -37,7 +37,6 @@ const UsersReducer = (state = initialState, actions) => {
             }
 
         }
-
         case "CURRENT-PAGE": {
             return {
                 ...state,
@@ -49,6 +48,7 @@ const UsersReducer = (state = initialState, actions) => {
             return state;
     }
 };
+
 
 export const followActionCreator = (id) => {
     return {
@@ -72,7 +72,6 @@ export const setUsersActionCreator = (user) => {
 }
 
 export const currentPageActionCreator = (page) => {
-    console.log(page);
     return {
         type: "CURRENT-PAGE",
         currentPage: page
