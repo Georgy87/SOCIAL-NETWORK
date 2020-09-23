@@ -8,21 +8,32 @@ class Users extends Component {
         this.props = props;
     }
     componentDidMount() {
-        if (this.props.usersPage.users.length === 0) {
-            axios
-                .get("https://social-network.samuraijs.com/api/1.0/users")
-                .then((res) => {
-                    this.props.setUsers(res.data.items);
-                });
-        }
+        axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}
+                &count=${3}`
+            )
+            .then((res) => {
+                this.props.setUsers(res.data.items);
+            });
+    }
+
+    onChangeCount(page) {
+        this.props.currentPage(page);
     }
 
     render() {
-        console.log(this.props);
         const { usersPage } = this.props;
-        console.log(usersPage);
+        let countPage = usersPage.totalItems / usersPage.pageItems;
+        let pages = [];
+        for (let i = 1; i < countPage; i++) {
+            pages.push(i);
+        }
+        const elementPages = pages.map((page) => {
+            return <span key={page} onClick={() => this.onChangeCount(page)}>{page}</span>;
+        });
+
         const element = usersPage.users.map((user) => {
-            console.log(user);
             return user.followed ? (
                 <UsersItem
                     text={"follow"}
@@ -39,7 +50,12 @@ class Users extends Component {
                 />
             );
         });
-        return <div className="users">{element}</div>;
+        return (
+            <>
+                {elementPages}
+                <div className="users">{element}</div>
+            </>
+        );
     }
 }
 
