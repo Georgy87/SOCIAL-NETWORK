@@ -1,5 +1,5 @@
 import React from "react";
-import photo from "../../../assets/img/avatar-computer-icons-clip-art-avatar.jpg";
+import photo from "../../../assets/img/preloader/3ac3da68aeffb6bc94fe1f9f2cf3b7b5.jpg";
 import "./UsersItem.css";
 const UsersItem = (props) => {
     const { user, follow, unfollow, text } = props;
@@ -20,7 +20,7 @@ const UsersItem = (props) => {
         <div className="user-content">
             <div className="user-item">
                 <img src={photo} alt="user-photo" />
-                {user.name}
+                <div className="user-title">{user.name}</div>
                 <button onClick={() => changeFollowUnfollow()}>{text}</button>
             </div>
         </div>

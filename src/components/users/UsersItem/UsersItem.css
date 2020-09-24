@@ -7,15 +7,32 @@
 .user-item img {
     display: block;
     border-radius: 100%;
-    width: 80px;
+    width: 100px;
+    height: 100px;
 }
 
 .user-item button {
     border: none;
     display: block;
     /* margin: 0 auto; */
+    color: rgb(189, 184, 184);
+    border: 1px solid rgb(88, 87, 87);
     margin-top: 5px;
-    margin-left: 4px;
+    margin-left: 13px;
     background-color: transparent;
-    border-radius: 4%;
+    border-radius: 6px;
+    box-shadow: 1px -4px 3px 1px rgba(19, 20, 20, 0.9);
+
+}
+.user-item button:hover {
+    outline: none;
+}
+
+.user-item button:focus {
+    outline: none;
+}
+
+.user-title {
+    color: rgb(189, 184, 184);
+    text-align: center;
 }

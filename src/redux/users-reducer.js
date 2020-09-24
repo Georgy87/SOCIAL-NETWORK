@@ -1,8 +1,8 @@
 const initialState = {
     users: [],
-    pageItems: 4,
+    pageItems: 100,
     currentPage: 1,
-    totalItems: 100,
+    totalItems: 1000,
     preloader: null
 };
 
