@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Users from "./Users";
 import * as axios from "axios";
 import { connect } from "react-redux";
+import preloaderGif from "../../assets/img/preloader/HarmoniousOddEyelashpitviper-size_restricted.gif";
 import {
     followActionCreator,
     unfollowActionCreator,
     setUsersActionCreator,
     currentPageActionCreator,
     totalItemsActionCreator,
+    setPreloaderActionCreator,
 } from "../../redux/users-reducer";
 
 class UsersContainer extends Component {
@@ -24,30 +26,42 @@ class UsersContainer extends Component {
             )
             .then(({ data }) => {
                 this.props.setUsers(data.items);
-                // this.props.totalItems(data.totalCount)
+                // this.props.totalItems(data.totalCount);
             });
     }
 
     onChangeCount(page) {
+        this.props.preloader(true);
         this.props.currentPage(page);
+        console.log(this.props);
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${page}
             &count=${this.props.usersPage.pageItems}`
             )
             .then((res) => {
+                this.props.preloader(false);
                 this.props.setUsers(res.data.items);
             });
     }
     render() {
         const { follow, unfollow, usersPage } = this.props;
+        console.log(this.props)
+        console.log(follow)
+        console.log(usersPage.preloader);
         return (
-            <Users
-                unfollow={unfollow}
-                follow={follow}
-                usersPage={usersPage}
-                onChangeCount={(page) => this.onChangeCount(page)}
-            />
+            <>
+                {usersPage.preloader ? (
+                    <img className="preloader" src={preloaderGif} alt="" />
+                ) : (
+                    <Users
+                        unfollow={unfollow}
+                        follow={follow}
+                        usersPage={usersPage}
+                        onChangeCount={(page) => this.onChangeCount(page)}
+                    />
+                )}
+            </>
         );
     }
 }
@@ -74,6 +88,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         totalItems: (total) => {
             dispatch(totalItemsActionCreator(total));
+        },
+        preloader: (preloader) => {
+            dispatch(setPreloaderActionCreator(preloader));
         },
     };
 };

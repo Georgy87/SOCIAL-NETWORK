@@ -2,7 +2,8 @@ const initialState = {
     users: [],
     pageItems: 4,
     currentPage: 1,
-    totalItems: 100
+    totalItems: 100,
+    preloader: null
 };
 
 const UsersReducer = (state = initialState, actions) => {
@@ -49,6 +50,12 @@ const UsersReducer = (state = initialState, actions) => {
                 totalItems: actions.totalItems
             }
         }
+        case "PRELOADER": {
+            return {
+                ...state,
+                preloader: actions.preloader
+            }
+        }
 
         default :
             return state;
@@ -85,11 +92,20 @@ export const currentPageActionCreator = (page) => {
 }
 
 export const totalItemsActionCreator = (total) => {
-    console.log(total);
     return {
         type: "TOTAL-ITEMS",
         totalItems: total
     }
 }
+
+export const setPreloaderActionCreator = (preloader) => {
+    console.log(preloader);
+    return {
+        type: "PRELOADER",
+        preloader: preloader
+    }
+}
+
+
 
 export default UsersReducer;

@@ -22,5 +22,8 @@
     display: flex;
     flex-direction: column;
 }
+.dialog-name {
+    color: rgb(238, 234, 234);
+}
 
 

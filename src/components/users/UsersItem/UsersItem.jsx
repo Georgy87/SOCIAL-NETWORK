@@ -3,12 +3,12 @@ import photo from "../../../assets/img/avatar-computer-icons-clip-art-avatar.jpg
 import "./UsersItem.css";
 const UsersItem = (props) => {
     const { user, follow, unfollow, text } = props;
-
+    console.log(props)
     const changeFollowUnfollow = () => {
         if (user.followed === true) {
-            unfollow(user.id);
+            props.store.unfollow(user.id);
         } else if (user.followed === false) {
-            follow(user.id);
+            props.store.follow(user.id);
         }
     };
 

@@ -13,8 +13,9 @@
 .user-item button {
     border: none;
     display: block;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     margin-top: 5px;
-    background-color: rgb(238, 232, 200);
+    margin-left: 4px;
+    background-color: transparent;
     border-radius: 4%;
 }

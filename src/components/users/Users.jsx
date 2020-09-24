@@ -3,7 +3,7 @@ import UsersItem from "./UsersItem/UsersItem";
 import "./Users.css";
 const Users = (props) => {
     const { usersPage, follow, unfollow } = props;
-
+    console.log(props)
     const countPage = Math.ceil(usersPage.totalItems / usersPage.pageItems);
     let pages = [];
     for (let i = 1; i <= countPage; i++) {
