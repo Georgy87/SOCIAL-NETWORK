@@ -1,7 +1,12 @@
 .dialog {
     display: flex;
     flex-direction: column;
-    background-image: url('./Снимок\ экрана\ 2020-09-24\ в\ 19.48.27.png')
+    background-image: url("./Снимок\ экрана\ 2020-09-24\ в\ 19.48.27.png");
+    max-height: 800px;
+    overflow-y: scroll;
+    margin-left: 5px;
+    border: 1px solid rgb(161, 160, 160);
+    border-radius: 5px;
 }
 
 .dialog-item a {
@@ -25,5 +30,11 @@
 .dialog-name {
     color: rgb(238, 234, 234);
 }
-
-
+.input-group-prepend span {
+    background-color: rgb(26, 25, 25);
+    cursor: pointer;
+}
+.input-group {
+    margin-top: 4px;
+    margin-left: 3px;
+}

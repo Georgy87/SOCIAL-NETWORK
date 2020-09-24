@@ -1,6 +1,12 @@
 .users {
     display: flex;
     flex-direction: column;
+    margin-top: 8px;
+    margin-left: 5px;
+    border: 1px solid rgb(138, 136, 136, 0.8);
+    border-radius: 5px;
+    overflow-y: scroll;
+    max-height: 1000px;
 }
 .pages-wrap {
     display: flex;
