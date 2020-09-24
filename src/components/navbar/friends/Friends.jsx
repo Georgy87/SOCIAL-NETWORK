@@ -14,7 +14,7 @@ const Friend = ({ name, url }) => {
         <div>
             <div className="friends-item">
                 <img src={url} alt="" />
-                <div>{name}</div>
+                <div className="friends-item-title">{name}</div>
             </div>
         </div>
     );

@@ -1,15 +1,15 @@
 .navbar-wrapper {
     grid-area: n;
-    background-color: rgb(150, 219, 213);
+    background-color: rgb(4, 20, 31);
     opacity: 0.8;
     padding: 10px;
     max-width: 200px;
-    background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/655a7668306315.5b5852c0b751f.jpg');
-    box-shadow: 1px -1px 3px 1px rgba(163, 162, 162, 0.5);
+    background-image: url('./Снимок\ экрана\ 2020-09-24\ в\ 19.45.48.png');
+    box-shadow: 1px -1px 3px 1px rgba(21, 46, 63, 0.5);
 }
 .navbar-item {
     text-align: center;
-    box-shadow: 1px -2px 3px 1px rgba(106, 153, 139, 0.9);
+    box-shadow: 1px -2px 3px 1px rgba(19, 20, 20, 0.9);
     width: 100%;
     border-radius: 5px;
     margin-bottom: 4px;

@@ -1,13 +1,56 @@
-import React from "react";
+import React, { Component } from "react";
 import Users from "./Users";
+import * as axios from "axios";
 import { connect } from "react-redux";
 import {
     followActionCreator,
     unfollowActionCreator,
     setUsersActionCreator,
     currentPageActionCreator,
-    totalItemsActionCreator
+    totalItemsActionCreator,
 } from "../../redux/users-reducer";
+
+class UsersContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+    }
+
+    componentDidMount() {
+        axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}
+            &count=${this.props.usersPage.pageItems}`
+            )
+            .then(({ data }) => {
+                this.props.setUsers(data.items);
+                // this.props.totalItems(data.totalCount)
+            });
+    }
+
+    onChangeCount(page) {
+        this.props.currentPage(page);
+        axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${page}
+            &count=${this.props.usersPage.pageItems}`
+            )
+            .then((res) => {
+                this.props.setUsers(res.data.items);
+            });
+    }
+    render() {
+        const { follow, unfollow, usersPage } = this.props;
+        return (
+            <Users
+                unfollow={unfollow}
+                follow={follow}
+                usersPage={usersPage}
+                onChangeCount={(page) => this.onChangeCount(page)}
+            />
+        );
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
@@ -31,10 +74,13 @@ const mapDispatchToProps = (dispatch) => {
         },
         totalItems: (total) => {
             dispatch(totalItemsActionCreator(total));
-        }
+        },
     };
 };
 
-const UserContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UserContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(UsersContainer);
 
 export default UserContainer;

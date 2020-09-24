@@ -19,14 +19,14 @@ const MyPosts = (props) => {
 
     return (
         <div className="post-wrapper">
-            My post
+            {/* My post
             <div>
                 <textarea onChange={onChangeInput} value={props.postsPage.postMessageText} />
                 <div>
                     <button onClick={onAddPost}>Add post</button>
                 </div>
             </div>
-            <div className="posts">{elementPostMessages}</div>
+            <div className="posts">{elementPostMessages}</div> */}
         </div>
     );
 };

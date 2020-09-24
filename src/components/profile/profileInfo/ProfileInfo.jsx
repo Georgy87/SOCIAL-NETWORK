@@ -5,11 +5,11 @@ const ProfileInfo = () => {
     return (
         <div>
             <div className="poster">
+                <div className="descr">
+                    SOCIAL-NETWORK
+                </div>
+            </div>
 
-            </div>
-            <div className="descr">
-                {/* descr */}
-            </div>
         </div>
     )
 }

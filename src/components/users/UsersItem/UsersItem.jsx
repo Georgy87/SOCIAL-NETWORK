@@ -2,13 +2,13 @@ import React from "react";
 import photo from "../../../assets/img/avatar-computer-icons-clip-art-avatar.jpg";
 import "./UsersItem.css";
 const UsersItem = (props) => {
-    const { user, store, text } = props;
+    const { user, follow, unfollow, text } = props;
 
     const changeFollowUnfollow = () => {
         if (user.followed === true) {
-            store.unfollow(user.id);
+            unfollow(user.id);
         } else if (user.followed === false) {
-            store.follow(user.id);
+            follow(user.id);
         }
     };
 
