@@ -1,9 +1,10 @@
 const initialState = {
     users: [],
-    pageItems: 100,
+    pageItems: 10,
     currentPage: 1,
     totalItems: 1000,
-    preloader: null
+    preloader: null,
+    transformPage: 0
 };
 
 const UsersReducer = (state = initialState, actions) => {
@@ -56,12 +57,17 @@ const UsersReducer = (state = initialState, actions) => {
                 preloader: actions.preloader
             }
         }
+        case "TRANSFORM-PAGE": {
+            return {
+                ...state,
+                transformPage: actions.transformPage
+            }
+        }
 
         default :
             return state;
     }
 };
-
 
 export const followActionCreator = (id) => {
     return {
@@ -99,13 +105,18 @@ export const totalItemsActionCreator = (total) => {
 }
 
 export const setPreloaderActionCreator = (preloader) => {
-    console.log(preloader);
     return {
         type: "PRELOADER",
         preloader: preloader
     }
 }
 
-
+export const transformPageActionCreator = (number) => {
+    console.log(number);
+    return {
+        type: "TRANSFORM-PAGE",
+        transformPage: number
+    }
+}
 
 export default UsersReducer;

@@ -3,7 +3,7 @@ import UsersItem from "./UsersItem/UsersItem";
 import "./Users.css";
 const Users = (props) => {
     const { usersPage, follow, unfollow } = props;
-    console.log(props)
+
     const countPage = Math.ceil(usersPage.totalItems / usersPage.pageItems);
     let pages = [];
     for (let i = 1; i <= countPage; i++) {
@@ -12,15 +12,17 @@ const Users = (props) => {
 
     const elementPages = pages.map((page) => {
         return (
-            <div className="pages-items">
-                <span
-                    className={usersPage.currentPage === page ? "pages" : ""}
-                    key={page}
-                    onClick={() => props.onChangeCount(page)}
-                >
-                    {page}
-                </span>
-            </div>
+            <>
+                <div className="pages-items">
+                    <span
+                        className={usersPage.currentPage === page ? "pages" : ""}
+                        key={page}
+                        onClick={() => props.onChangeCount(page)}
+                    >
+                        {page}
+                    </span>
+                </div>
+            </>
         );
     });
 
@@ -44,9 +46,18 @@ const Users = (props) => {
         );
     });
 
+    let obj = {
+        transform: `translateX(-${usersPage.transformPage - 1}%)`
+    }
+
     return (
         <>
-            <div className="pages-wrap">{elementPages}</div>
+            <div className="pages-wrap">
+                <div className="pages-content" style={obj}>
+                    {elementPages}
+                </div>
+            </div>
+            <button onClick={() => props.onChangeNext(usersPage.currentPage)}>next</button>
             <div className="users">{element}</div>
         </>
     );

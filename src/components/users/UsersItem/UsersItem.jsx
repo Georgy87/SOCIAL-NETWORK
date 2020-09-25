@@ -3,7 +3,7 @@ import photo from "../../../assets/img/preloader/3ac3da68aeffb6bc94fe1f9f2cf3b7b
 import "./UsersItem.css";
 const UsersItem = (props) => {
     const { user, follow, unfollow, text } = props;
-    console.log(props)
+   
     const changeFollowUnfollow = () => {
         if (user.followed === true) {
             props.store.unfollow(user.id);

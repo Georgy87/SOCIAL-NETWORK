@@ -10,6 +10,7 @@ import {
     currentPageActionCreator,
     totalItemsActionCreator,
     setPreloaderActionCreator,
+    transformPageActionCreator
 } from "../../redux/users-reducer";
 
 class UsersContainer extends Component {
@@ -33,7 +34,7 @@ class UsersContainer extends Component {
     onChangeCount(page) {
         this.props.preloader(true);
         this.props.currentPage(page);
-        console.log(this.props);
+
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${page}
@@ -44,11 +45,27 @@ class UsersContainer extends Component {
                 this.props.setUsers(res.data.items);
             });
     }
+
+    onChangeNext(page) {
+        this.props.preloader(true);
+        page++;
+        this.props.currentPage(page);
+        this.props.transformPage(page);
+
+        axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${page}
+                &count=${this.props.usersPage.pageItems}`
+            )
+            .then((res) => {
+                this.props.preloader(false);
+                this.props.setUsers(res.data.items);
+            });
+    }
+
     render() {
         const { follow, unfollow, usersPage } = this.props;
-        console.log(this.props)
-        console.log(follow)
-        console.log(usersPage.preloader);
+
         return (
             <>
                 {usersPage.preloader ? (
@@ -59,6 +76,7 @@ class UsersContainer extends Component {
                         follow={follow}
                         usersPage={usersPage}
                         onChangeCount={(page) => this.onChangeCount(page)}
+                        onChangeNext={(page) => this.onChangeNext(page)}
                     />
                 )}
             </>
@@ -92,6 +110,9 @@ const mapDispatchToProps = (dispatch) => {
         preloader: (preloader) => {
             dispatch(setPreloaderActionCreator(preloader));
         },
+        transformPage: (number) => {
+            dispatch(transformPageActionCreator(number));
+        }
     };
 };
 
