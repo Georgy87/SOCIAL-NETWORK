@@ -57,6 +57,7 @@ const Users = (props) => {
                     {elementPages}
                 </div>
             </div>
+            <button onClick={() => props.onChangePrev(usersPage.currentPage)}>prev</button>
             <button onClick={() => props.onChangeNext(usersPage.currentPage)}>next</button>
             <div className="users">{element}</div>
         </>

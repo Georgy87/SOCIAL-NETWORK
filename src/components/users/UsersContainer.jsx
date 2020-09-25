@@ -63,6 +63,32 @@ class UsersContainer extends Component {
             });
     }
 
+    onChangePrev(page) {
+
+        this.props.preloader(true);
+        page--;
+        this.props.currentPage(page);
+        this.props.transformPage(page);
+        // if (page < 1) {
+        //     page = this.props.usersPage.totalItems;
+        //     page--;
+        //     this.props.currentPage(page);
+        //     this.props.transformPage(page);
+        // }
+        // console.log(this.props.usersPage.totalItems)
+
+
+        axios
+            .get(
+                `https://social-network.samuraijs.com/api/1.0/users?page=${page}
+                &count=${this.props.usersPage.pageItems}`
+            )
+            .then((res) => {
+                this.props.preloader(false);
+                this.props.setUsers(res.data.items);
+            });
+    }
+
     render() {
         const { follow, unfollow, usersPage } = this.props;
 
@@ -77,6 +103,8 @@ class UsersContainer extends Component {
                         usersPage={usersPage}
                         onChangeCount={(page) => this.onChangeCount(page)}
                         onChangeNext={(page) => this.onChangeNext(page)}
+                        onChangePrev={(page) => this.onChangePrev(page)}
+
                     />
                 )}
             </>
