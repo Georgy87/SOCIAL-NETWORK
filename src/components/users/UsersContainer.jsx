@@ -4,13 +4,13 @@ import * as axios from "axios";
 import { connect } from "react-redux";
 import preloaderGif from "../../assets/img/preloader/HarmoniousOddEyelashpitviper-size_restricted.gif";
 import {
-    followActionCreator,
-    unfollowActionCreator,
-    setUsersActionCreator,
-    currentPageActionCreator,
-    totalItemsActionCreator,
-    setPreloaderActionCreator,
-    transformPageActionCreator
+    follow,
+    unfollow,
+    setUsers,
+    currentPage,
+    totalItems,
+    preloader,
+    transformPage,
 } from "../../redux/users-reducer";
 
 class UsersContainer extends Component {
@@ -64,7 +64,6 @@ class UsersContainer extends Component {
     }
 
     onChangePrev(page) {
-
         this.props.preloader(true);
         page--;
         this.props.currentPage(page);
@@ -76,7 +75,6 @@ class UsersContainer extends Component {
         //     this.props.transformPage(page);
         // }
         // console.log(this.props.usersPage.totalItems)
-
 
         axios
             .get(
@@ -104,7 +102,6 @@ class UsersContainer extends Component {
                         onChangeCount={(page) => this.onChangeCount(page)}
                         onChangeNext={(page) => this.onChangeNext(page)}
                         onChangePrev={(page) => this.onChangePrev(page)}
-
                     />
                 )}
             </>
@@ -118,35 +115,14 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (id) => {
-            dispatch(followActionCreator(id));
-        },
-        unfollow: (id) => {
-            dispatch(unfollowActionCreator(id));
-        },
-        setUsers: (user) => {
-            dispatch(setUsersActionCreator(user));
-        },
-        currentPage: (page) => {
-            dispatch(currentPageActionCreator(page));
-        },
-        totalItems: (total) => {
-            dispatch(totalItemsActionCreator(total));
-        },
-        preloader: (preloader) => {
-            dispatch(setPreloaderActionCreator(preloader));
-        },
-        transformPage: (number) => {
-            dispatch(transformPageActionCreator(number));
-        }
-    };
-};
-
-const UserContainer = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(UsersContainer);
+const UserContainer = connect(mapStateToProps, {
+    follow,
+    unfollow,
+    setUsers,
+    currentPage,
+    totalItems,
+    preloader,
+    transformPage,
+})(UsersContainer);
 
 export default UserContainer;

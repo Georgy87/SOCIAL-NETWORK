@@ -69,49 +69,49 @@ const UsersReducer = (state = initialState, actions) => {
     }
 };
 
-export const followActionCreator = (id) => {
+export const follow = (id) => {
     return {
         type: "follow",
         userId: id,
     };
 };
 
-export const unfollowActionCreator = (id) => {
+export const unfollow = (id) => {
     return {
         type: "unfollow",
         userId: id,
     };
 };
 
-export const setUsersActionCreator = (user) => {
+export const setUsers = (user) => {
     return {
         type: "USERS",
         users: user
     }
 }
 
-export const currentPageActionCreator = (page) => {
+export const currentPage = (page) => {
     return {
         type: "CURRENT-PAGE",
         currentPage: page
     }
 }
 
-export const totalItemsActionCreator = (total) => {
+export const totalItems= (total) => {
     return {
         type: "TOTAL-ITEMS",
         totalItems: total
     }
 }
 
-export const setPreloaderActionCreator = (preloader) => {
+export const preloader = (preloader) => {
     return {
         type: "PRELOADER",
         preloader: preloader
     }
 }
 
-export const transformPageActionCreator = (number) => {
+export const transformPage = (number) => {
     console.log(number);
     return {
         type: "TRANSFORM-PAGE",
