@@ -20,12 +20,15 @@ class UsersContainer extends Component {
     }
 
     componentDidMount() {
+        this.props.preloader(true);
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}
             &count=${this.props.usersPage.pageItems}`
             )
             .then(({ data }) => {
+                // console.log(data);
+                this.props.preloader(false);
                 this.props.setUsers(data.items);
                 // this.props.totalItems(data.totalCount);
             });
@@ -110,6 +113,7 @@ class UsersContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
     return {
         usersPage: state.usersPage,
     };

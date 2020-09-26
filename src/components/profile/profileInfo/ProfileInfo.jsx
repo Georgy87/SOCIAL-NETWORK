@@ -2,9 +2,16 @@ import React from 'react';
 import './ProfileInfo.css';
 
 const ProfileInfo = (props) => {
-    console.log(props.users);
+    console.log(props);
+    let string = '';
     if (!props.users) {
-        return '';
+        console.log('No props');
+    } else {
+        string = props.users.fullName
+    }
+    console.log(string)
+    const obj = {
+        color: 'white'
     }
     return (
         <div>
@@ -13,11 +20,9 @@ const ProfileInfo = (props) => {
                     SOCIAL-NETWORK
                 </div>
             </div>
-            <div>{props.users.fullName}</div>
-            {/* <img src={props.users.photos.small} alt=""/> */}
+            <div style={obj}>{string}</div>
         </div>
     )
-
 }
 
 export default ProfileInfo;

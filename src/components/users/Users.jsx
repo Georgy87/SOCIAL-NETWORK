@@ -12,6 +12,7 @@ const Users = (props) => {
     }
 
     const elementPages = pages.map((page) => {
+
         return (
             <>
                 <div className="pages-items">
@@ -28,6 +29,7 @@ const Users = (props) => {
     });
 
     const element = usersPage.users.map((user) => {
+
         return user.followed ? (
             <UsersItem
                 text={"follow"}
@@ -54,11 +56,9 @@ const Users = (props) => {
     return (
         <>
             <div className="pages-wrap">
-
                 <div className="pages-content" style={obj}>
                     {elementPages}
                 </div>
-
             </div>
             <button onClick={() => props.onChangePrev(usersPage.currentPage)}>prev</button>
             <button onClick={() => props.onChangeNext(usersPage.currentPage)}>next</button>

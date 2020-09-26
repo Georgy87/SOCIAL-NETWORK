@@ -13,15 +13,11 @@ const UsersItem = (props) => {
         }
     };
 
-    if (user.photos.small === null) {
-        user.photos.small = photo;
-    }
-
     return (
         <div className="user-content">
             <div className="user-item">
                 <NavLink to={`/profile/${user.id}`}>
-                    <img src={photo} alt="user-photo" />
+                    <img src={!user.photos.small ? photo : user.photos.small } alt="user-photo" />
                     <div className="user-title">{user.name}</div>
                 </NavLink>
                 <button onClick={() => changeFollowUnfollow()}>{text}</button>
