@@ -1,16 +1,17 @@
 import React from "react";
 import Header from "./components/header/Header";
 import Navbar from "./components/navbar/Navbar";
-import Profile from "./components/profile/Profile";
+import ProfilesContainer from "./components/profile/ProfileContainer";
 import DialogContainer from "./components/dialogs/DialogsContainer";
 import UsersContainer from "./components/users/UsersContainer";
 import { Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 import "./app.css";
 
 const App = () => {
-    const elementProfile = () => <Profile />;
+    const elementProfile = () => <ProfilesContainer />;
     const elementDialog = () => <DialogContainer />;
     const elementUsers = () => <UsersContainer />;
 

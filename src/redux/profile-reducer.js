@@ -4,7 +4,8 @@ let initialState = {
         { id: "2",  message: "Get verified and start posting today.", like: "1" },
         { id: "3", message: "Your audience is searching for you. Get verified on Google and amplify your brand.", like: "2" }
     ],
-    postMessageText: ''
+    postMessageText: '',
+    userProfile: null
 }
 const ProfileReducer = (state = initialState, actions) => {
     switch (actions.type) {
@@ -28,6 +29,13 @@ const ProfileReducer = (state = initialState, actions) => {
                 postMessageText: actions.newText,
             };
         }
+        case "USER-PROFILE": {
+            return  {
+                ...state,
+                userProfile: actions.userProfile,
+            };
+        }
+
         default :
             return state;
     }
@@ -43,6 +51,14 @@ export const changeInputACtionCreator = (text) => {
     return {
         type: 'ADD-TEXT',
 		newText: text
+    }
+}
+
+export const userProfile = (userProfile) => {
+    
+    return {
+        type: 'USER-PROFILE',
+		userProfile: userProfile
     }
 }
 
