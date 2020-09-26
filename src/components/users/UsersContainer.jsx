@@ -113,7 +113,6 @@ class UsersContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state);
     return {
         usersPage: state.usersPage,
     };

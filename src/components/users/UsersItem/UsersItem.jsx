@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const UsersItem = (props) => {
     const { user, follow, unfollow, text } = props;
+    
     const changeFollowUnfollow = () => {
         if (user.followed === true) {
             props.store.unfollow(user.id);
