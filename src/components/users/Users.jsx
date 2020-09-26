@@ -1,6 +1,7 @@
 import React from "react";
 import UsersItem from "./UsersItem/UsersItem";
 import "./Users.css";
+
 const Users = (props) => {
     const { usersPage, follow, unfollow } = props;
 
@@ -53,9 +54,11 @@ const Users = (props) => {
     return (
         <>
             <div className="pages-wrap">
+
                 <div className="pages-content" style={obj}>
                     {elementPages}
                 </div>
+
             </div>
             <button onClick={() => props.onChangePrev(usersPage.currentPage)}>prev</button>
             <button onClick={() => props.onChangeNext(usersPage.currentPage)}>next</button>

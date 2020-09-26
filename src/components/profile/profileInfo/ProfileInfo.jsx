@@ -2,13 +2,10 @@ import React from 'react';
 import './ProfileInfo.css';
 
 const ProfileInfo = (props) => {
-
+    console.log(props.users);
     if (!props.users) {
-        return <img src="" alt=""/>;
+        return '';
     }
-        console.log(props.users.photos.large)
-
-
     return (
         <div>
             <div className="poster">
@@ -16,7 +13,8 @@ const ProfileInfo = (props) => {
                     SOCIAL-NETWORK
                 </div>
             </div>
-            <img src={props.users.photos.small} alt=""/>
+            <div>{props.users.fullName}</div>
+            {/* <img src={props.users.photos.small} alt=""/> */}
         </div>
     )
 
