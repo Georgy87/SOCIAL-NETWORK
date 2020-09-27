@@ -24,7 +24,10 @@ class UsersContainer extends Component {
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}
-            &count=${this.props.usersPage.pageItems}`
+            &count=${this.props.usersPage.pageItems}`,
+                {
+                    withCredentials: true,
+                }
             )
             .then(({ data }) => {
                 // console.log(data);
@@ -41,7 +44,10 @@ class UsersContainer extends Component {
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${page}
-            &count=${this.props.usersPage.pageItems}`
+            &count=${this.props.usersPage.pageItems}`,
+                {
+                    withCredentials: true,
+                }
             )
             .then((res) => {
                 this.props.preloader(false);
@@ -58,7 +64,10 @@ class UsersContainer extends Component {
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${page}
-                &count=${this.props.usersPage.pageItems}`
+                &count=${this.props.usersPage.pageItems}`,
+                {
+                    withCredentials: true,
+                }
             )
             .then((res) => {
                 this.props.preloader(false);
@@ -82,7 +91,10 @@ class UsersContainer extends Component {
         axios
             .get(
                 `https://social-network.samuraijs.com/api/1.0/users?page=${page}
-                &count=${this.props.usersPage.pageItems}`
+                &count=${this.props.usersPage.pageItems}`,
+                {
+                    withCredentials: true,
+                }
             )
             .then((res) => {
                 this.props.preloader(false);
