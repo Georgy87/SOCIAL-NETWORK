@@ -4,29 +4,47 @@
     border-radius: 5px;
     margin-top: 5px;
     background-color: rgba(238, 227, 227, 0.3);
-    box-shadow: 1px -1px 3px 1px rgba(163, 162, 162, 0.5);
+    /* box-shadow: 1px -1px 3px 1px rgba(163, 162, 162, 0.5); */
 }
 .header-title {
-    display: block;
-    text-align: start;
+    display: flex;
+    justify-content: center;
     line-height: 45px;
     margin-left: 70px;
     opacity: 0.8;
     font-size: 25px;
 }
 .header-title span {
-    display: inline-block;
     color: white;
     text-align: right;
     margin-left: 750px;
 }
-.header-title span:hover{
+.header-login-user {
+    display: flex;
+
+}
+.header-login-user img {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin: auto;
+    margin-right: 8px;
+    border-radius: 100%;
+    background-size: cover;
+}
+.header-login-user span {
+    display: flex;
+    color: white;
+    margin-left: 720px;
+
+}
+.header-login-user span:hover {
     color: white;
     text-decoration: none;
 }
-.header-title span a{
+.header-login-user span a {
     color: white;
 }
-.header-title span a.active:hover {
-    text-decoration: none;
+.header-login-user a.active:hover {
+    color: white;
 }

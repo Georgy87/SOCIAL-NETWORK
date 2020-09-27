@@ -2,7 +2,8 @@ const initialState = {
     id: null,
     login: null,
     email: null,
-    isAuth: false
+    isAuth: false,
+    userProfileAuth: null,
 };
 
 const userAuthReducer = (state = initialState, actions) => {
@@ -13,6 +14,12 @@ const userAuthReducer = (state = initialState, actions) => {
                 ...actions.userData,
                 isAuth: true
             };
+        }
+        case "USER-PROFILE-AUTH": {
+            return {
+                ...state,
+                userProfileAuth: actions.userProfileAuth
+            }
         }
         default:
             return state;
@@ -27,6 +34,13 @@ export const setUserAuthData = ({id, login, email}) => {
             login,
             email,
         },
+    };
+};
+
+export const setUserProfileAuth = (userProfileAuth) => {
+    return {
+        type: "USER-PROFILE-AUTH",
+        userProfileAuth,
     };
 };
 
