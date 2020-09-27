@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./components/header/Header";
+import HeaderComponent  from "./components/header/HeaderContainer";
 import Navbar from "./components/navbar/Navbar";
 import ProfileContainer from "./components/profile/ProfileContainer";
 import DialogContainer from "./components/dialogs/DialogsContainer";
@@ -14,10 +14,10 @@ const App = () => {
     const elementProfile = () => <ProfileContainer />;
     const elementDialog = () => <DialogContainer />;
     const elementUsers = () => <UsersContainer />;
-    
+
     return (
         <div className="app-wrapper">
-            <Header />
+            <HeaderComponent  />
             <Navbar />
             <div className="app-wrapper-content">
                 <Route path="/profile/:userId?" render={elementProfile} />

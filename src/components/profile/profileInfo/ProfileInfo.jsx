@@ -13,8 +13,6 @@ const ProfileInfo = (props) => {
         newPhoto = props.users.photos.small;
     }
 
-
-
     const obj = {
         color: 'white'
     }

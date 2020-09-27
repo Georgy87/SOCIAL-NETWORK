@@ -55,7 +55,6 @@ export const changeInputACtionCreator = (text) => {
 }
 
 export const userProfile = (userProfile) => {
-    
     return {
         type: 'USER-PROFILE',
 		userProfile: userProfile

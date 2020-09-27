@@ -14,3 +14,19 @@
     opacity: 0.8;
     font-size: 25px;
 }
+.header-title span {
+    display: inline-block;
+    color: white;
+    text-align: right;
+    margin-left: 750px;
+}
+.header-title span:hover{
+    color: white;
+    text-decoration: none;
+}
+.header-title span a{
+    color: white;
+}
+.header-title span a.active:hover {
+    text-decoration: none;
+}
