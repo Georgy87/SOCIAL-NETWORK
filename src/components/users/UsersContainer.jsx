@@ -11,7 +11,7 @@ import {
     preloader,
     transformPage,
 } from "../../redux/users-reducer";
-import { getUser, getUserPagination } from "../api/api";
+import { usersApi } from "../api/api";
 
 class UsersContainer extends Component {
     constructor(props) {
@@ -22,9 +22,9 @@ class UsersContainer extends Component {
     componentDidMount() {
         this.props.preloader(true);
 
-        getUser(this.props.currentPage, this.props.usersPage.pageItems).then(
-            ({ data }) => {
-                // console.log(data);
+        usersApi.getUser(this.props.currentPage, this.props.usersPage.pageItems).then(
+            (data) => {
+                console.log(data);
                 this.props.preloader(false);
                 this.props.setUsers(data.items);
                 // this.props.totalItems(data.totalCount);
@@ -36,9 +36,9 @@ class UsersContainer extends Component {
         this.props.preloader(true);
         this.props.currentPage(page);
 
-        getUserPagination(page, this.props.usersPage.pageItems).then((res) => {
+        usersApi.getUserPagination(page, this.props.usersPage.pageItems).then((data) => {
             this.props.preloader(false);
-            this.props.setUsers(res.data.items);
+            this.props.setUsers(data.items);
         });
     }
 
@@ -48,9 +48,9 @@ class UsersContainer extends Component {
         this.props.currentPage(page);
         this.props.transformPage(page);
 
-        getUserPagination(page, this.props.usersPage.pageItems).then((res) => {
+        usersApi.getUserPagination(page, this.props.usersPage.pageItems).then((data) => {
             this.props.preloader(false);
-            this.props.setUsers(res.data.items);
+            this.props.setUsers(data.items);
         });
     }
 
@@ -67,9 +67,9 @@ class UsersContainer extends Component {
         // }
         // console.log(this.props.usersPage.totalItems)
 
-        getUserPagination(page, this.props.usersPage.pageItems).then((res) => {
+        usersApi.getUserPagination(page, this.props.usersPage.pageItems).then((data) => {
             this.props.preloader(false);
-            this.props.setUsers(res.data.items);
+            this.props.setUsers(data.items);
         });
     }
 
