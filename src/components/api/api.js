@@ -31,6 +31,17 @@ export const profileApi = {
     }
 }
 
+export const followApi = {
+    deleteFollow(userId) {
+        return instance.delete(`follow/${userId}`)
+        .then(res => res.data)
+    },
+    postFollow(userId) {
+        return instance.post(`follow/${userId}`, {},)
+        .then(res => res.data)
+    }
+}
+
 
 
 
