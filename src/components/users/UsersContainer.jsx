@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Users from "./Users";
-import * as axios from "axios";
 import { connect } from "react-redux";
 import preloaderGif from "../../assets/img/preloader/HarmoniousOddEyelashpitviper-size_restricted.gif";
 import {
@@ -12,6 +11,7 @@ import {
     preloader,
     transformPage,
 } from "../../redux/users-reducer";
+import { getUser, getUserPagination } from "../api/api";
 
 class UsersContainer extends Component {
     constructor(props) {
@@ -21,38 +21,25 @@ class UsersContainer extends Component {
 
     componentDidMount() {
         this.props.preloader(true);
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}
-            &count=${this.props.usersPage.pageItems}`,
-                {
-                    withCredentials: true,
-                }
-            )
-            .then(({ data }) => {
+
+        getUser(this.props.currentPage, this.props.usersPage.pageItems).then(
+            ({ data }) => {
                 // console.log(data);
                 this.props.preloader(false);
                 this.props.setUsers(data.items);
                 // this.props.totalItems(data.totalCount);
-            });
+            }
+        );
     }
 
     onChangeCount(page) {
         this.props.preloader(true);
         this.props.currentPage(page);
 
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${page}
-            &count=${this.props.usersPage.pageItems}`,
-                {
-                    withCredentials: true,
-                }
-            )
-            .then((res) => {
-                this.props.preloader(false);
-                this.props.setUsers(res.data.items);
-            });
+        getUserPagination(page, this.props.usersPage.pageItems).then((res) => {
+            this.props.preloader(false);
+            this.props.setUsers(res.data.items);
+        });
     }
 
     onChangeNext(page) {
@@ -61,18 +48,10 @@ class UsersContainer extends Component {
         this.props.currentPage(page);
         this.props.transformPage(page);
 
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${page}
-                &count=${this.props.usersPage.pageItems}`,
-                {
-                    withCredentials: true,
-                }
-            )
-            .then((res) => {
-                this.props.preloader(false);
-                this.props.setUsers(res.data.items);
-            });
+        getUserPagination(page, this.props.usersPage.pageItems).then((res) => {
+            this.props.preloader(false);
+            this.props.setUsers(res.data.items);
+        });
     }
 
     onChangePrev(page) {
@@ -88,18 +67,10 @@ class UsersContainer extends Component {
         // }
         // console.log(this.props.usersPage.totalItems)
 
-        axios
-            .get(
-                `https://social-network.samuraijs.com/api/1.0/users?page=${page}
-                &count=${this.props.usersPage.pageItems}`,
-                {
-                    withCredentials: true,
-                }
-            )
-            .then((res) => {
-                this.props.preloader(false);
-                this.props.setUsers(res.data.items);
-            });
+        getUserPagination(page, this.props.usersPage.pageItems).then((res) => {
+            this.props.preloader(false);
+            this.props.setUsers(res.data.items);
+        });
     }
 
     render() {
