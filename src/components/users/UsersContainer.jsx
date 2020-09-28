@@ -10,6 +10,7 @@ import {
     totalItems,
     preloader,
     transformPage,
+    setArrayForDisable
 } from "../../redux/users-reducer";
 import { usersApi } from "../api/api";
 
@@ -74,7 +75,7 @@ class UsersContainer extends Component {
     }
 
     render() {
-        const { follow, unfollow, usersPage } = this.props;
+        const { follow, unfollow, usersPage, setArrayForDisable } = this.props;
 
         return (
             <>
@@ -88,6 +89,7 @@ class UsersContainer extends Component {
                         onChangeCount={(page) => this.onChangeCount(page)}
                         onChangeNext={(page) => this.onChangeNext(page)}
                         onChangePrev={(page) => this.onChangePrev(page)}
+                        setArrayForDisable={setArrayForDisable}
                     />
                 )}
             </>
@@ -96,6 +98,7 @@ class UsersContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
+
     return {
         usersPage: state.usersPage,
     };
@@ -109,6 +112,7 @@ const UserContainer = connect(mapStateToProps, {
     totalItems,
     preloader,
     transformPage,
+    setArrayForDisable
 })(UsersContainer);
 
 export default UserContainer;

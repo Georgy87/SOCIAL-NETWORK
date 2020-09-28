@@ -4,7 +4,8 @@ const initialState = {
     currentPage: 1,
     totalItems: 1000,
     preloader: null,
-    transformPage: 0
+    transformPage: 0,
+    arrayForDisable: [],
 };
 
 const UsersReducer = (state = initialState, actions) => {
@@ -63,6 +64,14 @@ const UsersReducer = (state = initialState, actions) => {
                 transformPage: actions.transformPage
             }
         }
+        case "SET-ARRAY-FOR-DISABLE" : {
+            return {
+                ...state,
+                arrayForDisable: actions.truth ?
+                [...state.arrayForDisable, actions.userId] :
+                [...state.arrayForDisable.filter(el => el ==='k')]
+            }
+        }
 
         default :
             return state;
@@ -116,6 +125,15 @@ export const transformPage = (number) => {
     return {
         type: "TRANSFORM-PAGE",
         transformPage: number
+    }
+}
+
+export const setArrayForDisable = (truth, userId) => {
+    console.log(truth, userId);
+    return {
+        type: "SET-ARRAY-FOR-DISABLE",
+        userId: userId,
+        truth: truth
     }
 }
 
