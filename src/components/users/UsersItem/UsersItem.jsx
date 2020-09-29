@@ -16,7 +16,6 @@ const UsersItem = (props) => {
                 if(data.resultCode === 0) {
                     unfollow(user.id);
                     setArrayForDisable(false, user.id);
-                    console.log(usersPage);
                 }
             });
 
@@ -25,12 +24,11 @@ const UsersItem = (props) => {
                 if(data.resultCode === 0) {
                     follow(user.id);
                     setArrayForDisable(false, user.id);
-                    console.log(usersPage);
                 }
             });
         }
     };
-    console.log( usersPage );
+    console.log(usersPage);
 
     return (
 
@@ -40,7 +38,7 @@ const UsersItem = (props) => {
                     <img src={!user.photos.small ? photo : user.photos.small } alt="user-photo" />
                     <div className="user-title">{user.name}</div>
                 </NavLink>
-                <button onClick={() => changeFollowUnfollow()}>{text}</button>
+                <button  disabled={usersPage.arrayForDisable.some(id => id === user.id)} onClick={() => changeFollowUnfollow()}>{text}</button>
             </div>
         </div>
     );

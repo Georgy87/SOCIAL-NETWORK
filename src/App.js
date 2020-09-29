@@ -14,7 +14,6 @@ const App = () => {
     const elementProfile = () => <ProfileContainer />;
     const elementDialog = () => <DialogContainer />;
     const elementUsers = () => <UsersContainer />;
-
     return (
         <div className="app-wrapper">
             <HeaderComponent  />
@@ -26,6 +25,7 @@ const App = () => {
             </div>
         </div>
     );
+
 };
 
 export default App;

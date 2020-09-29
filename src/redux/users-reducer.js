@@ -121,7 +121,6 @@ export const preloader = (preloader) => {
 }
 
 export const transformPage = (number) => {
-    console.log(number);
     return {
         type: "TRANSFORM-PAGE",
         transformPage: number
