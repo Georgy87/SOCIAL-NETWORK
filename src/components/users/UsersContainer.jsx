@@ -5,12 +5,14 @@ import preloaderGif from "../../assets/img/preloader/HarmoniousOddEyelashpitvipe
 import {
     follow,
     unfollow,
-    setUsers,
     currentPage,
     totalItems,
-    preloader,
     transformPage,
-    setArrayForDisable
+    setArrayForDisable,
+    getUsersActionCreator,
+    changeUsersActionCreator,
+    onChangeUsersNextActionCreator,
+    onChangeUsersPrevActionCreator
 } from "../../redux/users-reducer";
 import { usersApi } from "../api/api";
 
@@ -21,62 +23,24 @@ class UsersContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.preloader(true);
-
-        usersApi.getUser(this.props.currentPage, this.props.usersPage.pageItems).then(
-            (data) => {
-                console.log(data);
-                this.props.preloader(false);
-                this.props.setUsers(data.items);
-                // this.props.totalItems(data.totalCount);
-            }
-        );
+        this.props.getUsersActionCreator(this.props.currentPage, this.props.usersPage.pageItems);
     }
 
     onChangeCount(page) {
-        this.props.preloader(true);
-        this.props.currentPage(page);
-
-        usersApi.getUserPagination(page, this.props.usersPage.pageItems).then((data) => {
-            this.props.preloader(false);
-            this.props.setUsers(data.items);
-        });
+        this.props.changeUsersActionCreator(page, this.props.usersPage.pageItems);
     }
 
     onChangeNext(page) {
-        this.props.preloader(true);
-        page++;
-        this.props.currentPage(page);
-        this.props.transformPage(page);
-
-        usersApi.getUserPagination(page, this.props.usersPage.pageItems).then((data) => {
-            this.props.preloader(false);
-            this.props.setUsers(data.items);
-        });
+        this.props.onChangeUsersNextActionCreator(page, this.props.usersPage.pageItems);
     }
 
     onChangePrev(page) {
-        this.props.preloader(true);
-        page--;
-        this.props.currentPage(page);
-        this.props.transformPage(page);
-        // if (page < 1) {
-        //     page = this.props.usersPage.totalItems;
-        //     page--;
-        //     this.props.currentPage(page);
-        //     this.props.transformPage(page);
-        // }
-        // console.log(this.props.usersPage.totalItems)
-
-        usersApi.getUserPagination(page, this.props.usersPage.pageItems).then((data) => {
-            this.props.preloader(false);
-            this.props.setUsers(data.items);
-        });
+        this.props.onChangeUsersPrevActionCreator(page, this.props.usersPage.pageItems);
     }
 
     render() {
         const { follow, unfollow, usersPage, setArrayForDisable } = this.props;
-
+        console.log(this.props);
         return (
             <>
                 {usersPage.preloader ? (
@@ -98,7 +62,6 @@ class UsersContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-
     return {
         usersPage: state.usersPage,
     };
@@ -107,12 +70,14 @@ const mapStateToProps = (state) => {
 const UserContainer = connect(mapStateToProps, {
     follow,
     unfollow,
-    setUsers,
     currentPage,
     totalItems,
-    preloader,
     transformPage,
-    setArrayForDisable
+    setArrayForDisable,
+    getUsersActionCreator,
+    changeUsersActionCreator,
+    onChangeUsersNextActionCreator,
+    onChangeUsersPrevActionCreator
 })(UsersContainer);
 
 export default UserContainer;

@@ -28,7 +28,6 @@ const UsersItem = (props) => {
             });
         }
     };
-    console.log(usersPage);
 
     return (
 

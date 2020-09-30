@@ -1,3 +1,4 @@
+import { usersApi } from "../components/api/api";
 const initialState = {
     users: [],
     pageItems: 10,
@@ -133,6 +134,60 @@ export const setArrayForDisable = (truth, userId) => {
         type: "SET-ARRAY-FOR-DISABLE",
         userId: userId,
         truth: truth
+    }
+}
+
+export const getUsersActionCreator = (currentPage, pageItems) => {
+
+    return (dispatch) => {
+        dispatch(preloader(true));
+        usersApi.getUser(currentPage, pageItems).then(
+            (data) => {
+                dispatch(preloader(false));
+                dispatch(setUsers(data.items));
+                // this.props.totalItems(data.totalCount);
+            }
+        );
+    }
+}
+
+export const changeUsersActionCreator = (page, pageItems) => {
+
+    return (dispatch) => {
+        dispatch(preloader(true));
+        dispatch(currentPage(page));
+        usersApi.getUserPagination(page, pageItems).then((data) => {
+            dispatch(preloader(false));
+            dispatch(setUsers(data.items));
+        });
+    }
+}
+
+export const onChangeUsersNextActionCreator = (page, pageItems) => {
+    return (dispatch) => {
+        dispatch(preloader(true));
+        page++;
+        dispatch(currentPage(page));
+        dispatch(transformPage(page));
+
+        usersApi.getUserPagination(page, pageItems).then((data) => {
+            dispatch(preloader(false));
+            dispatch(setUsers(data.items));
+        });
+    }
+}
+
+export const onChangeUsersPrevActionCreator = (page, pageItems) => {
+    return (dispatch) => {
+        dispatch(preloader(true));
+        page--;
+        dispatch(currentPage(page));
+        dispatch(transformPage(page));
+
+        usersApi.getUserPagination(page, pageItems).then((data) => {
+            dispatch(preloader(false));
+            dispatch(setUsers(data.items));
+        });
     }
 }
 
