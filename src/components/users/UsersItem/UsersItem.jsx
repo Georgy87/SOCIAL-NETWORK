@@ -9,23 +9,10 @@ const UsersItem = (props) => {
     const { setArrayForDisable, follow, unfollow, usersPage } = props.store;
 
     const changeFollowUnfollow = () => {
-        setArrayForDisable(true, user.id);
-
         if (user.followed === true) {
-            followApi.deleteFollow(user.id).then(data => {
-                if(data.resultCode === 0) {
-                    unfollow(user.id);
-                    setArrayForDisable(false, user.id);
-                }
-            });
-
+            unfollow(user.id);
         } else if (user.followed === false) {
-            followApi.postFollow(user.id).then(data => {
-                if(data.resultCode === 0) {
-                    follow(user.id);
-                    setArrayForDisable(false, user.id);
-                }
-            });
+            follow(user.id);
         }
     };
 

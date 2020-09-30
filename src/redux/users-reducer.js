@@ -1,4 +1,4 @@
-import { usersApi } from "../components/api/api";
+import { usersApi, followApi } from "../components/api/api";
 const initialState = {
     users: [],
     pageItems: 10,
@@ -79,14 +79,14 @@ const UsersReducer = (state = initialState, actions) => {
     }
 };
 
-export const follow = (id) => {
+export const followChange = (id) => {
     return {
         type: "follow",
         userId: id,
     };
 };
 
-export const unfollow = (id) => {
+export const unfollowChange = (id) => {
     return {
         type: "unfollow",
         userId: id,
@@ -129,7 +129,6 @@ export const transformPage = (number) => {
 }
 
 export const setArrayForDisable = (truth, userId) => {
-    console.log(truth, userId);
     return {
         type: "SET-ARRAY-FOR-DISABLE",
         userId: userId,
@@ -138,7 +137,6 @@ export const setArrayForDisable = (truth, userId) => {
 }
 
 export const getUsersActionCreator = (currentPage, pageItems) => {
-
     return (dispatch) => {
         dispatch(preloader(true));
         usersApi.getUser(currentPage, pageItems).then(
@@ -187,6 +185,31 @@ export const onChangeUsersPrevActionCreator = (page, pageItems) => {
         usersApi.getUserPagination(page, pageItems).then((data) => {
             dispatch(preloader(false));
             dispatch(setUsers(data.items));
+        });
+    }
+}
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(setArrayForDisable(true, userId));
+        followApi.postFollow(userId).then(data => {
+            if(data.resultCode === 0) {
+                dispatch(followChange(userId));
+                dispatch(setArrayForDisable(false, userId));
+            }
+        });
+    }
+}
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(setArrayForDisable(true, userId));
+        followApi.deleteFollow(userId).then(data => {
+            if(data.resultCode === 0) {
+                console.log(userId);
+                dispatch(unfollowChange(userId));
+                dispatch(setArrayForDisable(false, userId));
+            }
         });
     }
 }

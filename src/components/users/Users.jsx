@@ -29,7 +29,6 @@ const Users = (props) => {
     });
 
     const element = usersPage.users.map((user) => {
-
         return user.followed ? (
             <UsersItem
                 text={"follow"}
