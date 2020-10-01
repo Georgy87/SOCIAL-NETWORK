@@ -11,7 +11,7 @@ const initialState = {
 
 const UsersReducer = (state = initialState, actions) => {
     switch (actions.type) {
-        case "follow": {
+        case "FOLLOW-CHANGE": {
             return {
                 ...state,
                 users: state.users.map((user) => {
@@ -23,7 +23,7 @@ const UsersReducer = (state = initialState, actions) => {
                 }),
             };
         }
-        case "unfollow": {
+        case "UNFOLLOW-CHANGE": {
             return {
                 ...state,
                 users: state.users.map((user) => {
@@ -81,14 +81,14 @@ const UsersReducer = (state = initialState, actions) => {
 
 export const followChange = (id) => {
     return {
-        type: "follow",
+        type: "FOLLOW-CHANGE",
         userId: id,
     };
 };
 
 export const unfollowChange = (id) => {
     return {
-        type: "unfollow",
+        type: "UNFOLLOW-CHANGE",
         userId: id,
     };
 };
@@ -206,7 +206,6 @@ export const unfollow = (userId) => {
         dispatch(setArrayForDisable(true, userId));
         followApi.deleteFollow(userId).then(data => {
             if(data.resultCode === 0) {
-                console.log(userId);
                 dispatch(unfollowChange(userId));
                 dispatch(setArrayForDisable(false, userId));
             }

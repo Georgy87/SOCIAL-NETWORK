@@ -24,7 +24,7 @@ const UsersItem = (props) => {
                     <img src={!user.photos.small ? photo : user.photos.small } alt="user-photo" />
                     <div className="user-title">{user.name}</div>
                 </NavLink>
-                <button  disabled={usersPage.arrayForDisable.some(id => id === user.id)} onClick={() => changeFollowUnfollow()}>{text}</button>
+                <button onClick={() => changeFollowUnfollow()}>{text}</button>
             </div>
         </div>
     );

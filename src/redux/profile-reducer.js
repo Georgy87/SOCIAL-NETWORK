@@ -1,3 +1,4 @@
+import { profileApi } from "../components/api/api";
 let initialState = {
     postMessages: [
         { id: "1", message: "Keep your presence fresh on Google.", like: "5" },
@@ -58,6 +59,14 @@ export const userProfile = (userProfile) => {
     return {
         type: 'USER-PROFILE',
 		userProfile: userProfile
+    }
+}
+
+export const setProfileToProfileInfo = (userId) => {
+    return (dispatch) => {
+        profileApi.getProfile(userId).then(({ data }) => {
+            dispatch(userProfile(data));
+        });
     }
 }
 
