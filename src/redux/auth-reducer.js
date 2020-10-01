@@ -1,3 +1,6 @@
+import * as axios from "axios";
+import { apiAuth } from "../components/api/api";
+
 const initialState = {
     id: null,
     login: null,
@@ -38,10 +41,27 @@ export const setUserAuthData = ({id, login, email}) => {
 };
 
 export const setUserProfileAuth = (userProfileAuth) => {
+    console.log(userProfileAuth);
     return {
         type: "USER-PROFILE-AUTH",
         userProfileAuth,
     };
 };
+
+export const setThunkAuthProfile = () => {
+    return (dispatch) => {
+        apiAuth.getAuth().then((response) => {
+            dispatch(setUserAuthData(response.data.data));
+            axios
+                .get(
+                    `https://social-network.samuraijs.com/api/1.0/profile/${response.data.data.id}`
+                ).then((response) => {
+                    dispatch(setUserProfileAuth(response.data));
+                });
+        })
+    }
+}
+
+
 
 export default userAuthReducer;

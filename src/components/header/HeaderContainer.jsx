@@ -1,28 +1,14 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import { connect } from "react-redux";
-import { setUserAuthData, setUserProfileAuth } from "../../redux/auth-reducer";
-import * as axios from "axios";
+import { setUserAuthData, setUserProfileAuth, setThunkAuthProfile } from "../../redux/auth-reducer";
 
 class HeaderComponent extends Component {
     constructor(props) {
         super(props);
     }
     componentDidMount() {
-        axios
-            .get("https://social-network.samuraijs.com/api/1.0/auth/me", {
-                withCredentials: true,
-            })
-            .then((response) => {
-                this.props.setUserAuthData(response.data.data);
-                axios
-                    .get(
-                        `https://social-network.samuraijs.com/api/1.0/profile/${response.data.data.id}`
-                    )
-                    .then((response) => {
-                        this.props.setUserProfileAuth(response.data);
-                    });
-            });
+        this.props.setThunkAuthProfile();
     }
 
     render() {
@@ -31,6 +17,7 @@ class HeaderComponent extends Component {
 }
 const mapStateToProps = (state) => {
     const { auth } = state;
+    console.log(auth);
     return {
         login: auth.login,
         isAuth: auth.isAuth,
@@ -41,4 +28,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
     setUserAuthData,
     setUserProfileAuth,
+    setThunkAuthProfile
 })(HeaderComponent);
