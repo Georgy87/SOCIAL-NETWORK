@@ -41,7 +41,6 @@ export const setUserAuthData = ({id, login, email}) => {
 };
 
 export const setUserProfileAuth = (userProfileAuth) => {
-    console.log(userProfileAuth);
     return {
         type: "USER-PROFILE-AUTH",
         userProfileAuth,

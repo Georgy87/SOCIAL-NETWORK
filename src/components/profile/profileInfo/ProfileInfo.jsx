@@ -3,8 +3,6 @@ import './ProfileInfo.css';
 import photo from "../../../assets/img/preloader/3ac3da68aeffb6bc94fe1f9f2cf3b7b5.jpg";
 
 const ProfileInfo = (props) => {
-    console.log(props);
-
     let string = '';
     let newPhoto = '';
     if (!props.users) {

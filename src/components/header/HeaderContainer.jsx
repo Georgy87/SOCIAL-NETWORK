@@ -17,7 +17,6 @@ class HeaderComponent extends Component {
 }
 const mapStateToProps = (state) => {
     const { auth } = state;
-    console.log(auth);
     return {
         login: auth.login,
         isAuth: auth.isAuth,

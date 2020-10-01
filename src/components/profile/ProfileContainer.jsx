@@ -27,9 +27,11 @@ class ProfileContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state);
 
     return {
         users: state.postsPage.userProfile,
+        auth: state.auth.isAuth
     };
 };
 const dataUrlForComponent = withRouter(ProfileContainer);

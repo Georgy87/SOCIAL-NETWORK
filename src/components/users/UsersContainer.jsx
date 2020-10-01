@@ -14,7 +14,6 @@ import {
     onChangeUsersNextActionCreator,
     onChangeUsersPrevActionCreator
 } from "../../redux/users-reducer";
-import { usersApi } from "../api/api";
 
 class UsersContainer extends Component {
     constructor(props) {
@@ -39,14 +38,16 @@ class UsersContainer extends Component {
     }
 
     render() {
-        const { follow, unfollow, usersPage, setArrayForDisable } = this.props;
-        console.log(this.props);
+        const { follow, unfollow, usersPage, setArrayForDisable, auth } = this.props;
+        console.log(auth)
+
         return (
             <>
                 {usersPage.preloader ? (
                     <img className="preloader" src={preloaderGif} alt="" />
                 ) : (
                     <Users
+                        auth={auth}
                         unfollow={unfollow}
                         follow={follow}
                         usersPage={usersPage}
@@ -62,8 +63,10 @@ class UsersContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.auth.isAuth)
     return {
         usersPage: state.usersPage,
+        auth: state.auth.isAuth
     };
 };
 

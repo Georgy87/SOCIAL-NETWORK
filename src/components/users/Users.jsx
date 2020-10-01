@@ -1,9 +1,11 @@
 import React from "react";
 import UsersItem from "./UsersItem/UsersItem";
 import "./Users.css";
+import { Redirect } from "react-router-dom";
 
 const Users = (props) => {
-    const { usersPage, follow, unfollow} = props;
+    console.log(props)
+    const { usersPage, follow, unfollow, auth} = props;
 
     const countPage = Math.ceil(usersPage.totalItems / usersPage.pageItems);
     let pages = [];
@@ -52,6 +54,9 @@ const Users = (props) => {
         transform: `translateX(-${usersPage.transformPage - 1}%)`
     }
 
+    if (!auth) {
+        return <Redirect to="/login"/>
+    }
     return (
         <>
             <div className="pages-wrap">
