@@ -4,7 +4,6 @@ import "./Users.css";
 import { Redirect } from "react-router-dom";
 
 const Users = (props) => {
-    console.log(props)
     const { usersPage, follow, unfollow, auth} = props;
 
     const countPage = Math.ceil(usersPage.totalItems / usersPage.pageItems);

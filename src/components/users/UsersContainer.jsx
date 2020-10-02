@@ -63,7 +63,6 @@ class UsersContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.auth.isAuth)
     return {
         usersPage: state.usersPage,
         auth: state.auth.isAuth
