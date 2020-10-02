@@ -5,11 +5,19 @@ import {
     dialogTextActionCreator,
 } from "../../redux/dialog-reducer";
 import { connect } from "react-redux";
+import { withAuthRedirect } from "../hoc/WithAuthRedirect";
+
+const mapAuthToProps = (state) => {
+    return {
+        auth: state.auth.isAuth
+    }
+}
+
+const redirectAuthMapToProps = connect(mapAuthToProps)(withAuthRedirect(Dialog));
 
 const mapStateToProps = (state) => {
     return {
         state: state.dialogPage,
-        auth: state.auth.isAuth
     };
 };
 
@@ -23,6 +31,7 @@ const mapDispatchToProps = (dispatch) => {
         },
     };
 };
-const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(Dialog);
+
+const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(redirectAuthMapToProps);
 
 export default DialogContainer;

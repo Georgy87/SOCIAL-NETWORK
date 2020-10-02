@@ -44,7 +44,7 @@ export const followApi = {
 
 export const apiAuth = {
     getAuth() {
-        return instance.get("https://social-network.samuraijs.com/api/1.0/auth/me")
+        return instance.get("https://social-network.samuraijs.com/api/1.0/auth/me");
     }
 }
 

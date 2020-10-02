@@ -14,6 +14,7 @@ import {
     onChangeUsersNextActionCreator,
     onChangeUsersPrevActionCreator
 } from "../../redux/users-reducer";
+import { withAuthRedirect } from "../hoc/WithAuthRedirect";
 
 class UsersContainer extends Component {
     constructor(props) {
@@ -62,10 +63,17 @@ class UsersContainer extends Component {
     }
 }
 
+const mapAuthToProps = (state) => {
+    return {
+        auth: state.auth.isAuth
+    }
+}
+
+const redirectAuthMapToProps = connect(mapAuthToProps)(withAuthRedirect(UsersContainer));
+
 const mapStateToProps = (state) => {
     return {
         usersPage: state.usersPage,
-        auth: state.auth.isAuth
     };
 };
 
@@ -80,6 +88,6 @@ const UserContainer = connect(mapStateToProps, {
     changeUsersActionCreator,
     onChangeUsersNextActionCreator,
     onChangeUsersPrevActionCreator
-})(UsersContainer);
+})(redirectAuthMapToProps);
 
 export default UserContainer;

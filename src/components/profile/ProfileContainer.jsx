@@ -34,7 +34,6 @@ const mapAuthToProps = (state) => {
 }
 let redirectAuthMapToProps = connect(mapAuthToProps)(withAuthRedirect(ProfileContainer));
 
-
 const mapStateToProps = (state) => {
     return {
         users: state.postsPage.userProfile,

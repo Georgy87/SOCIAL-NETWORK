@@ -53,9 +53,6 @@ const Users = (props) => {
         transform: `translateX(-${usersPage.transformPage - 1}%)`
     }
 
-    if (!auth) {
-        return <Redirect to="/login"/>
-    }
     return (
         <>
             <div className="pages-wrap">

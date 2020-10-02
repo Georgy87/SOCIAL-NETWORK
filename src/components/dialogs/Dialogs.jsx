@@ -4,7 +4,6 @@ import DialogItem from './DialogItem/DialogsItem';
 import {FormControl} from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Redirect } from "react-router-dom";
 
 const Dialog = (props) => {
 
@@ -27,9 +26,7 @@ const Dialog = (props) => {
             props.addMessage();
         }
     }
-    if (!props.auth) {
-        return <Redirect to="/login" />
-    }
+
     return (
         <div>
         <div className="dialog">
