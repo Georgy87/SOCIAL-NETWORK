@@ -15,6 +15,7 @@ import {
     onChangeUsersPrevActionCreator
 } from "../../redux/users-reducer";
 import { withAuthRedirect } from "../hoc/WithAuthRedirect";
+import { compose } from 'redux';
 
 class UsersContainer extends Component {
     constructor(props) {
@@ -69,7 +70,7 @@ const mapAuthToProps = (state) => {
     }
 }
 
-const redirectAuthMapToProps = connect(mapAuthToProps)(withAuthRedirect(UsersContainer));
+// const redirectAuthMapToProps = connect(mapAuthToProps)(withAuthRedirect(UsersContainer));
 
 const mapStateToProps = (state) => {
     return {
@@ -77,17 +78,34 @@ const mapStateToProps = (state) => {
     };
 };
 
-const UserContainer = connect(mapStateToProps, {
-    follow,
-    unfollow,
-    currentPage,
-    totalItems,
-    transformPage,
-    setArrayForDisable,
-    getUsersActionCreator,
-    changeUsersActionCreator,
-    onChangeUsersNextActionCreator,
-    onChangeUsersPrevActionCreator
-})(redirectAuthMapToProps);
+// const UserContainer = connect(mapStateToProps, {
+//     follow,
+//     unfollow,
+//     currentPage,
+//     totalItems,
+//     transformPage,
+//     setArrayForDisable,
+//     getUsersActionCreator,
+//     changeUsersActionCreator,
+//     onChangeUsersNextActionCreator,
+//     onChangeUsersPrevActionCreator
+// })(redirectAuthMapToProps);
 
-export default UserContainer;
+// export default UserContainer;
+
+export default compose(
+    connect(mapAuthToProps),
+    withAuthRedirect,
+    connect(mapStateToProps, {
+        follow,
+        unfollow,
+        currentPage,
+        totalItems,
+        transformPage,
+        setArrayForDisable,
+        getUsersActionCreator,
+        changeUsersActionCreator,
+        onChangeUsersNextActionCreator,
+        onChangeUsersPrevActionCreator
+    })
+)(UsersContainer);
