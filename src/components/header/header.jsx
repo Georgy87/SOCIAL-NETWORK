@@ -16,7 +16,7 @@ const Header = (props) => {
     } else if (props.authUserId && props.authUserId.userId === 11618) {
         photo = newPhoto;
     }
-    
+
     return (
         <header className="header">
             <div className="header-title">

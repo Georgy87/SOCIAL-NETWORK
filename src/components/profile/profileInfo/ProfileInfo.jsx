@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProfileInfo.css';
 import photo from "../../../assets/img/preloader/3ac3da68aeffb6bc94fe1f9f2cf3b7b5.jpg";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
     let string = '';
@@ -12,19 +13,21 @@ const ProfileInfo = (props) => {
         newPhoto = props.users.photos.small;
     }
 
-    const obj = {
-        color: 'white'
-    }
-
     return (
         <div>
             <div className="poster">
-                <div className="descr">
+                <div className="poster-descr">
                     SOCIAL-NETWORK
                 </div>
             </div>
-            <div style={obj}>{string}</div>
-            <img src={newPhoto === null ? photo : newPhoto} alt=""/>
+            <div className="profile">
+                <div className="profile-content">
+                    <img src={newPhoto === null ? photo : newPhoto} alt=""/>
+                    <div className="profile-descr">{string}</div>
+                    <ProfileStatus status={"hello world"}/>
+                </div>
+
+            </div>
         </div>
     )
 }
