@@ -46,13 +46,12 @@ const ProfileReducer = (state = initialState, actions) => {
                 userProfile: actions.userProfile,
             };
         }
-        case "GET-STATUS": {
+        case "SET-STATUS": {
             return {
                 ...state,
                 status: actions.status,
             };
         }
-
         default:
             return state;
     }
@@ -78,9 +77,9 @@ export const userProfile = (userProfile) => {
     };
 };
 
-export const getStatus = (status) => {
+export const setStatus = (status) => {
     return {
-        type: "GET-STATUS",
+        type: "SET-STATUS",
         status: status,
     };
 };
@@ -93,11 +92,19 @@ export const setProfileToProfileInfo = (userId) => {
     };
 };
 
-export const setStatusToProfileInfo = (userId) => {
-    console.log(userId);
+export const getStatusToProfileInfo = (userId) => {
     return (dispatch) => {
-        profileApi.getStatus(`status/2`).then(({ data }) => {
-            dispatch(getStatus(data));
+        profileApi.getStatus(2).then(({ data }) => {
+            dispatch(setStatus(data));
+        });
+    };
+};
+
+export const setStatusToProfileInfo = (status) => {
+    return (dispatch) => {
+        profileApi.upDateStatus(status).then(({ data }) => {
+            console.log(data);
+            dispatch(setStatus(status));
         });
     };
 };

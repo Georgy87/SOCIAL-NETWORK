@@ -22,7 +22,7 @@ const ProfileInfo = (props) => {
                 <div className="profile-content">
                     <img src={newPhoto === null ? photo : newPhoto} alt="" />
                     <div className="profile-descr">{string}</div>
-                    <ProfileStatus status={props.status} />
+                    <ProfileStatus status={props.status} setStatusToProfileInfo={props.setStatusToProfileInfo}/>
                 </div>
             </div>
         </div>
