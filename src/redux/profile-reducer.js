@@ -1,13 +1,24 @@
 import { profileApi } from "../components/api/api";
 let initialState = {
     postMessages: [
-        { id: "1", message: "Keep your presence fresh on Google.", like: "5" },
-        { id: "2",  message: "Get verified and start posting today.", like: "1" },
-        { id: "3", message: "Your audience is searching for you. Get verified on Google and amplify your brand.", like: "2" }
+        {   id: "1",
+            message: "Keep your presence fresh on Google.",
+            like: "5" },
+        {
+            id: "2",
+            message: "Get verified and start posting today.",
+            like: "1",
+        },
+        {
+            id: "3",
+            message: "Your audience is searching for you. Get verified on Google and amplify your brand.",
+            like: "2",
+        },
     ],
-    postMessageText: '',
-    userProfile: null
-}
+    postMessageText: "",
+    userProfile: null,
+    status: "",
+};
 const ProfileReducer = (state = initialState, actions) => {
     switch (actions.type) {
         case "ADD-POST": {
@@ -17,57 +28,78 @@ const ProfileReducer = (state = initialState, actions) => {
                 like: "10",
             };
 
-            return  {
+            return {
                 ...state,
                 postMessages: [...state.postMessages, newPost],
-                postMessageText: ''
+                postMessageText: "",
             };
         }
         case "ADD-TEXT": {
-
-            return  {
+            return {
                 ...state,
                 postMessageText: actions.newText,
             };
         }
         case "USER-PROFILE": {
-            return  {
+            return {
                 ...state,
                 userProfile: actions.userProfile,
             };
         }
+        case "GET-STATUS": {
+            return {
+                ...state,
+                status: actions.status,
+            };
+        }
 
-        default :
+        default:
             return state;
     }
 };
 
 export const addPostACtionCreator = () => {
-	return {
-		type: 'ADD-POST'
-	}
-}
+    return {
+        type: "ADD-POST",
+    };
+};
 
 export const changeInputACtionCreator = (text) => {
     return {
-        type: 'ADD-TEXT',
-		newText: text
-    }
-}
+        type: "ADD-TEXT",
+        newText: text,
+    };
+};
 
 export const userProfile = (userProfile) => {
     return {
-        type: 'USER-PROFILE',
-		userProfile: userProfile
-    }
-}
+        type: "USER-PROFILE",
+        userProfile: userProfile,
+    };
+};
+
+export const getStatus = (status) => {
+    return {
+        type: "GET-STATUS",
+        status: status,
+    };
+};
 
 export const setProfileToProfileInfo = (userId) => {
     return (dispatch) => {
         profileApi.getProfile(userId).then(({ data }) => {
             dispatch(userProfile(data));
         });
-    }
-}
+    };
+};
+
+export const setStatusToProfileInfo = (userId) => {
+    console.log(userId);
+    return (dispatch) => {
+        profileApi.getStatus(`status/2`).then(({ data }) => {
+            dispatch(getStatus(data));
+        });
+    };
+};
 
 export default ProfileReducer;

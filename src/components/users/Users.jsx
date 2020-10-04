@@ -1,7 +1,6 @@
 import React from "react";
 import UsersItem from "./UsersItem/UsersItem";
 import "./Users.css";
-import { Redirect } from "react-router-dom";
 
 const Users = (props) => {
     const { usersPage, follow, unfollow, auth} = props;
@@ -13,7 +12,6 @@ const Users = (props) => {
     }
 
     const elementPages = pages.map((page) => {
-
         return (
             <>
                 <div className="pages-items">

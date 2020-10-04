@@ -1,13 +1,13 @@
-import React from 'react';
-import './ProfileInfo.css';
+import React from "react";
+import "./ProfileInfo.css";
 import photo from "../../../assets/img/preloader/3ac3da68aeffb6bc94fe1f9f2cf3b7b5.jpg";
 import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
-    let string = '';
-    let newPhoto = '';
+    let string = "";
+    let newPhoto = "";
     if (!props.users) {
-        console.log('No props');
+        console.log("No props");
     } else {
         string = props.users.fullName;
         newPhoto = props.users.photos.small;
@@ -16,20 +16,17 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div className="poster">
-                <div className="poster-descr">
-                    SOCIAL-NETWORK
-                </div>
+                <div className="poster-descr">SOCIAL-NETWORK</div>
             </div>
             <div className="profile">
                 <div className="profile-content">
-                    <img src={newPhoto === null ? photo : newPhoto} alt=""/>
+                    <img src={newPhoto === null ? photo : newPhoto} alt="" />
                     <div className="profile-descr">{string}</div>
-                    <ProfileStatus status={"hello world"}/>
+                    <ProfileStatus status={props.status} />
                 </div>
-
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default ProfileInfo;

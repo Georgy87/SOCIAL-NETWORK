@@ -1,25 +1,18 @@
 import React, { Component } from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import { setProfileToProfileInfo } from "../../redux/profile-reducer";
+import { setProfileToProfileInfo, setStatusToProfileInfo } from "../../redux/profile-reducer";
 import { withRouter } from "react-router";
-import { withAuthRedirect } from "../hoc/WithAuthRedirect";
 import { compose } from 'redux';
 
 class ProfileContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.props = props;
-    }
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = 11618;
         }
-        // profileApi.getProfile(userId).then(({ data }) => {
-        //     this.props.userProfile(data);
-        // });
         this.props.setProfileToProfileInfo(userId);
+        this.props.setStatusToProfileInfo(userId);
     }
 
     render() {
@@ -30,11 +23,12 @@ class ProfileContainer extends Component {
 }
 
 const mapAuthToProps = (state) => {
+    // console.log(state.postsPage.status);
     return {
-        auth: state.auth.isAuth
+        auth: state.auth.isAuth,
+        status: state.postsPage.status
     }
 }
-// let redirectAuthMapToProps = connect(mapAuthToProps)(withAuthRedirect(ProfileContainer));
 
 const mapStateToProps = (state) => {
     return {
@@ -42,12 +36,9 @@ const mapStateToProps = (state) => {
     };
 };
 
-// const dataUrlForComponent = withRouter(redirectAuthMapToProps);
-// export default connect(mapStateToProps, {setProfileToProfileInfo})(dataUrlForComponent);
-
 export default compose(
     connect(mapAuthToProps),
     // withAuthRedirect,
     withRouter,
-    connect(mapStateToProps, {setProfileToProfileInfo})
+    connect(mapStateToProps, {setProfileToProfileInfo, setStatusToProfileInfo})
 )(ProfileContainer);
