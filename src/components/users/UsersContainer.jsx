@@ -14,7 +14,7 @@ import {
     onChangeUsersNextActionCreator,
     onChangeUsersPrevActionCreator
 } from "../../redux/users-reducer";
-import { withAuthRedirect } from "../hoc/WithAuthRedirect";
+// import { withAuthRedirect } from "../hoc/WithAuthRedirect";
 import { compose } from 'redux';
 
 class UsersContainer extends Component {
@@ -95,7 +95,7 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapAuthToProps),
-    withAuthRedirect,
+    // withAuthRedirect,
     connect(mapStateToProps, {
         follow,
         unfollow,
