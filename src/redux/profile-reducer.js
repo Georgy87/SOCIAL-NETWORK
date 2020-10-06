@@ -93,8 +93,9 @@ export const setProfileToProfileInfo = (userId) => {
 };
 
 export const getStatusToProfileInfo = (userId) => {
+    console.log(userId);
     return (dispatch) => {
-        profileApi.getStatus(2).then(({ data }) => {
+        profileApi.getStatus(userId).then(({ data }) => {
             dispatch(setStatus(data));
         });
     };

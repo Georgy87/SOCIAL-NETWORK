@@ -5,7 +5,7 @@ class ProfileStatus extends React.Component {
         super(props);
         this.state = {
             status: false,
-            statusValue: ""
+            statusValue: this.props.status
         };
     }
 
@@ -28,21 +28,30 @@ class ProfileStatus extends React.Component {
         });
     }
 
-    render() {
+    componentDidUpdate(prevProps, prevState) {
 
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                statusValue: this.props.status
+            });
+        }
+    }
+
+    render() {
+        console.log(this.state.statusValue);
         let element = this.state.status === false ?
             (
                 <div
                     onClick={this.onChangeClickStatus}
                     className="profile-status"
                 >
-                    {this.props.status}
+                    {!this.props.status ? "Введите статус" : this.props.status}
                 </div>
             ) : (
                 <input
                     autoFocus={true}
                     onChange={this.onChangeValue}
-                    defaultValue={this.props.status}
+                    defaultValue={this.state.statusValue}
                     onBlur={this.onChangeBlurStatus}
                     type="text"
                 />
