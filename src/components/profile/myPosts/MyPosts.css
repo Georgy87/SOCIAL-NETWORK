@@ -14,14 +14,17 @@
     margin-right: 2px;
     margin-left: 2px;
     border-radius: 4px;
+    border: none;
 }
 .post-submit button{
     border: none;
     height: 30px;
+    width: 100px;
     color: white;
     background-color: transparent;
     border: 1px solid white;
     border-radius: 4px;
+    margin-left: 5px;
 }
 .post-like-descr {
     display: flex;

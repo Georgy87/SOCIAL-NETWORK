@@ -15,7 +15,6 @@ let initialState = {
             like: "2",
         },
     ],
-    postMessageText: "",
     userProfile: null,
     status: "",
 };
@@ -24,7 +23,7 @@ const ProfileReducer = (state = initialState, actions) => {
         case "ADD-POST": {
             const newPost = {
                 id: "4",
-                message: state.postMessageText,
+                message: actions.message,
                 like: "10",
             };
 
@@ -32,12 +31,6 @@ const ProfileReducer = (state = initialState, actions) => {
                 ...state,
                 postMessages: [...state.postMessages, newPost],
                 postMessageText: "",
-            };
-        }
-        case "ADD-TEXT": {
-            return {
-                ...state,
-                postMessageText: actions.newText,
             };
         }
         case "USER-PROFILE": {
@@ -57,16 +50,10 @@ const ProfileReducer = (state = initialState, actions) => {
     }
 };
 
-export const addPostACtionCreator = () => {
+export const addPostACtionCreator = (text) => {
     return {
         type: "ADD-POST",
-    };
-};
-
-export const changeInputACtionCreator = (text) => {
-    return {
-        type: "ADD-TEXT",
-        newText: text,
+        message: text.message
     };
 };
 
