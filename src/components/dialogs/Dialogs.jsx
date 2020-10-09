@@ -1,9 +1,8 @@
 import React from "react";
 import "./Dialog.css";
 import DialogItem from './DialogItem/DialogsItem';
-import {FormControl} from 'react-bootstrap';
 import InputGroup from 'react-bootstrap/InputGroup';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Field, reduxForm } from "redux-form";
 
 const Dialog = (props) => {
 
@@ -36,18 +35,23 @@ const Dialog = (props) => {
         </div>
             <InputGroup onChange={onAddChange} >
                 <InputGroup.Prepend >
-                    <InputGroup.Text   variant="dark" onClick={onAddMessage} id="basic-addon1">Message</InputGroup.Text>
+                    {/* <InputGroup.Text   variant="dark" onClick={onAddMessage} id="basic-addon1">Message</InputGroup.Text> */}
                 </InputGroup.Prepend>
-                <FormControl
+                {/* <FormControl
                     // value={props.state.dialogPageMessageText}
                     onKeyPress={handleKeyPress}
                     placeholder="message"
                     aria-label="Username"
                     aria-describedby="basic-addon1"
-                />
+                /> */}
+                <MessageForm />
             </InputGroup>
         </div>
     );
 };
+
+
+
+// onKeyPress={handleKeyPress}
 
 export default Dialog;

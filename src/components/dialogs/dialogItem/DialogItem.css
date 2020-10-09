@@ -17,13 +17,14 @@ a.active {
 .bubble {
     min-height: 40px;
     max-width: 200px;
+    min-width: 50px;
     margin-left: 40px;
     margin-bottom: 20px;
     border-radius: 15px;
     border: 1px solid #717374;
     display: block;
     position: relative;
-    box-shadow: 1px -1px 3px 1px rgba(80, 80, 80, 0.5);
+    /* box-shadow: 1px -1px 3px 1px rgba(80, 80, 80, 0.5); */
 }
 
 .bubble::after {
@@ -35,8 +36,7 @@ a.active {
     position: absolute;
     bottom: -11px;
     left: 5px;
-    background-image: url('./Снимок\ экрана\ 2020-09-24\ в\ 19.48.27.png');
-
+    background-image: url("./Снимок\ экрана\ 2020-09-24\ в\ 19.48.27.png");
     transform: skewX(-30deg) skewY(-48deg);
 }
 
@@ -54,17 +54,12 @@ a.active {
     align-items: end;
     margin-top: 10px;
     margin-left: 30px;
-
 }
 
 .dialog-name {
     margin-top: 10px;
 }
+
 hr {
     width: 1000px;
 }
-
-
-
-
-

@@ -39,7 +39,6 @@ const UsersReducer = (state = initialState, actions) => {
                 ...state,
                 users: [ ...actions.users ]
             }
-
         }
         case "CURRENT-PAGE": {
             return {
@@ -73,7 +72,6 @@ const UsersReducer = (state = initialState, actions) => {
                 [...state.arrayForDisable.filter(el => el ==='k')]
             }
         }
-
         default :
             return state;
     }
@@ -150,7 +148,6 @@ export const getUsersActionCreator = (currentPage, pageItems) => {
 }
 
 export const changeUsersActionCreator = (page, pageItems) => {
-
     return (dispatch) => {
         dispatch(preloader(true));
         dispatch(currentPage(page));

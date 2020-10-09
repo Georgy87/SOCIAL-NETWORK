@@ -38,7 +38,6 @@ class ProfileStatus extends React.Component {
     }
 
     render() {
-        console.log(this.state.statusValue);
         let element = this.state.status === false ?
             (
                 <div
