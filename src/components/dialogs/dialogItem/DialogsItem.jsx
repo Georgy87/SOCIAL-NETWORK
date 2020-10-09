@@ -1,6 +1,7 @@
 import React from "react";
 import "./DialogItem.css";
 import { NavLink } from "react-router-dom";
+import photo from "../../../assets/img/preloader/3ac3da68aeffb6bc94fe1f9f2cf3b7b5.jpg";
 
 const DialogItem = (props) => {
     let path = "/dialog/" + props.id;
@@ -8,7 +9,7 @@ const DialogItem = (props) => {
         <div>
             <div className="dialog-content">
                 <NavLink to={path} activeClassName="active">
-                    <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/259608/images/3941391/flat-face-icon-23.png" alt=""/>
+                    <img src={photo} alt=""/>
                     <div className="dialog-name">{props.name}</div>
                 </NavLink>
                 <div className="bubble">

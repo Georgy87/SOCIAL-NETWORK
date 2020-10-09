@@ -18,14 +18,14 @@ const MyPosts = (props) => {
 
     return (
         <div className="post-wrapper">
-            {/* My post
-            <div>
-                <textarea onChange={onChangeInput} value={props.postsPage.postMessageText} />
-                <div>
+            My post
+            <div className="posts-wrapper">
+                <textarea className="post-text" onChange={onChangeInput} value={props.postsPage.postMessageText} />
+                <div className="post-submit">
                     <button onClick={onAddPost}>Add post</button>
                 </div>
             </div>
-            <div className="posts">{elementPostMessages}</div> */}
+            <div className="posts">{elementPostMessages}</div>
         </div>
     );
 };

@@ -1,5 +1,30 @@
 .post-wrapper {
     padding: 10px;
-    height: 500px;
     margin-left: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 100px rgba(0,0,0,0.22);
+    margin-top: 100px;
+}
+.posts-wrapper {
+    display: flex;
+}
+
+.post-text {
+    height: 30px;
+    width: 800px;
+    margin-right: 2px;
+    margin-left: 2px;
+    border-radius: 4px;
+}
+.post-submit button{
+    border: none;
+    height: 30px;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+.post-like-descr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -1,15 +1,17 @@
 .navbar-wrapper {
     grid-area: n;
-    background-color: rgb(4, 20, 31);
+    /* background-color: rgb(32, 32, 32); */
     opacity: 0.8;
     padding: 10px;
+    min-height: 1200px;
+    margin-right: 5px;
     max-width: 200px;
-    background-image: url('./Снимок\ экрана\ 2020-09-24\ в\ 19.45.48.png');
-    box-shadow: 1px -1px 3px 1px rgba(21, 46, 63, 0.5);
+    min-width: 200px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 100px rgba(0,0,0,0.22);
 }
 .navbar-item {
     text-align: center;
-    box-shadow: 1px -2px 3px 1px rgba(19, 20, 20, 0.9);
+    /* box-shadow: 1px -2px 3px 1px rgba(19, 20, 20, 0.9); */
     width: 100%;
     border-radius: 5px;
     margin-bottom: 4px;
@@ -36,7 +38,7 @@
 
 .friends-wrapper {
     display: flex;
-    margin-top: 400px;
+    margin-top: 300px;
     flex-direction: column;
     min-height: 200px;
 }

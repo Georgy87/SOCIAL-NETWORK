@@ -3,8 +3,9 @@
     height: 50px;
     border-radius: 5px;
     margin-top: 5px;
-    background-color: rgba(238, 227, 227, 0.3);
+    /* background-color: rgba(238, 227, 227, 0.3); */
     /* box-shadow: 1px -1px 3px 1px rgba(163, 162, 162, 0.5); */
+    box-shadow: 0 134px 28px rgba(0,0,0,0.25), 0 0px 1px rgba(22, 22, 22, 0.22);
 }
 .header-title {
     display: flex;
@@ -15,12 +16,14 @@
     font-size: 25px;
 }
 .header-title span {
-    color: white;
+    color: rgb(216, 127, 25);
     text-align: right;
     margin-left: 750px;
 }
 .header-login-user {
     display: flex;
+    color: rgb(233, 231, 229);
+
 
 }
 .header-login-user img {
@@ -33,17 +36,17 @@
     background-size: cover;
 }
 .header-login-user span {
-    display: flex;
-    color: white;
-    margin-left: 720px;
+
+    color: rgb(245, 243, 241);
+    margin-left: 1050px;
 
 }
 .header-login-user span:hover {
-    color: white;
+    color: rgb(231, 121, 17);
     text-decoration: none;
 }
 .header-login-user span a {
-    color: white;
+    color: rgb(243, 118, 17);
 }
 .header-login-user a.active:hover {
     color: white;

@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div className="poster">
-                <div className="poster-descr">SOCIAL-NETWORK</div>
+                {/* <div className="poster-descr">SOCIAL-NETWORK</div> */}
             </div>
             <div className="profile">
                 <div className="profile-content">

@@ -3,7 +3,10 @@ a.active {
 }
 
 .dialog-content img {
-    width: 40px;
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+
 }
 
 .messages-item {
@@ -36,7 +39,7 @@ a.active {
     position: absolute;
     bottom: -11px;
     left: 5px;
-    background-image: url("./Снимок\ экрана\ 2020-09-24\ в\ 19.48.27.png");
+    /* background-image: url("./Снимок\ экрана\ 2020-09-24\ в\ 19.48.27.png"); */
     transform: skewX(-30deg) skewY(-48deg);
 }
 
@@ -56,8 +59,10 @@ a.active {
     margin-left: 30px;
 }
 
+
 .dialog-name {
     margin-top: 10px;
+    text-align: center;
 }
 
 hr {

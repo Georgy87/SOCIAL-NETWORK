@@ -13,8 +13,8 @@ const Friend = ({ name, url }) => {
     return (
         <div>
             <div className="friends-item">
-                <img src={url} alt="" />
-                <div className="friends-item-title">{name}</div>
+                {/* <img src={url} alt="" />
+                <div className="friends-item-title">{name}</div> */}
             </div>
         </div>
     );

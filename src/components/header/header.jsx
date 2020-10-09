@@ -21,11 +21,9 @@ const Header = (props) => {
         <header className="header">
             <div className="header-title">
                 <div className="header-login-user">
-                    SOCIAL NETWORK
+                    {/* SOCIAL NETWORK */}
                     <span>
-                        <div>
-                            <img src={photo} alt="" />
-                        </div>
+
                         {element}
                     </span>
                 </div>

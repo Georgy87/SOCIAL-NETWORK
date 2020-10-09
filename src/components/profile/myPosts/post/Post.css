@@ -1,8 +1,14 @@
 .post-item {
-    color: blue;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    padding: 10px;
+
 }
 .post-item img {
     width: 90px;
     height: 90px;
     border-radius: 100px;
+    margin: 0 auto;
 }

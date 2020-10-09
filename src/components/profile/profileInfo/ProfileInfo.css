@@ -1,14 +1,4 @@
-.poster {
-    width: 100%;
-    height: 400px;
-    background-image: url("Сн.png");
-    /* background-repeat: no-repeat; */
-    background-size: cover;
-    background-position: -50px 0px;
-    box-shadow: 1px -1px 3px 1px rgba(89, 90, 88, 0.2);
-    margin-left: 5px;
-    /* opacity: 0.9; */
-}
+
 
 .poster-descr {
     color: rgb(201, 196, 196);
@@ -20,8 +10,9 @@
 }
 
 .profile {
-    margin-top: 20px;
-    margin-left: 20px;
+    padding: 50px;
+    margin-left: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .profile img {
