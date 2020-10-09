@@ -1,57 +1,42 @@
 import React from "react";
 import "./Dialog.css";
-import DialogItem from './DialogItem/DialogsItem';
-import InputGroup from 'react-bootstrap/InputGroup';
+import DialogItem from "./DialogItem/DialogsItem";
 import { Field, reduxForm } from "redux-form";
 
 const Dialog = (props) => {
-
-    const elementNames =  props.state.dialogNames.map((item) => {
+    const elementNames = props.state.dialogNames.map((item) => {
         const { name, id, message } = item;
-        return <DialogItem key={id} name={name} id={id} message={message}/>;
+        return <DialogItem key={id} name={name} id={id} message={message} />;
     });
 
-    const onAddMessage = () => {
-        props.addMessage();
-    }
-
-    const onAddChange = (e) => {
-        props.addChange(e.target.value);
-    }
-
-    const handleKeyPress = (e) => {
-        if(e.key == 'Enter'){
-            // props.addChange(e.target.value);
-            props.addMessage();
+    const onAddMessage = (message, e) => {
+        if (message || e.key == "Enter") {
+            props.addMessage(message);
         }
-    }
+    };
 
     return (
         <div>
-        <div className="dialog">
-            <div className="dialog-item">
-                {elementNames}
+            <div className="dialog">
+                <div className="dialog-item">{elementNames}</div>
             </div>
-        </div>
-            <InputGroup onChange={onAddChange} >
-                <InputGroup.Prepend >
-                    {/* <InputGroup.Text   variant="dark" onClick={onAddMessage} id="basic-addon1">Message</InputGroup.Text> */}
-                </InputGroup.Prepend>
-                {/* <FormControl
-                    // value={props.state.dialogPageMessageText}
-                    onKeyPress={handleKeyPress}
-                    placeholder="message"
-                    aria-label="Username"
-                    aria-describedby="basic-addon1"
-                /> */}
-                <MessageForm />
-            </InputGroup>
+            <MessageReduxForm onSubmit={onAddMessage} />
         </div>
     );
 };
 
+const MessageForm = (props) => {
+    const { handleSubmit } = props;
+    return (
+        <form onSubmit={handleSubmit}>
+            <button type="submit">Submit</button>
+            <div>
+                <Field name="message" component="input" type="text" />
+            </div>
+        </form>
+    );
+};
 
-
-// onKeyPress={handleKeyPress}
+const MessageReduxForm = reduxForm({ form: "message" })(MessageForm);
 
 export default Dialog;

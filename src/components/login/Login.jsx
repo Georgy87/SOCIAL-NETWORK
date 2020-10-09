@@ -26,7 +26,6 @@ const Login = () => {
     const submit = (val) => {
         console.log(val);
     };
-
     return (
         <div>
             <LoginReduxForm onSubmit={submit} />

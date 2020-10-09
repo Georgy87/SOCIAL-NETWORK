@@ -5,24 +5,17 @@ let initialState = {
         { name: "Gosha", id: "3" ,  message: "Ho"},
         { name: "Svetlana", id: "4",  message: "Fucdfdks;;dlkf dl;s'd;lfsd fdfl;ssjdkflskdjfslkdjfslkdjfsjhdjkfhsjdhfksjhdkfjshdkjhfskdjfhskdjhfjshdfkjshdkfjhskdjfhskjhdfksjhdkjfshkdjfhskdhfksdjhfjksdhfd"},
         { name: "Ruslan", id: "5" , message: "Fuck"},
-    ],
-    dialogPageMessageText: ''
+    ]
 }
 
 const DialogReducer = (state = initialState, actions) => {
 
     switch (actions.type) {
-        case "ADD-MESSAGE-TEXT": {
-            return {
-                ...state,
-                dialogPageMessageText: actions.messageText
-            }
-        }
         case "ADD-MESSAGE-DIALOG": {
             let newMessage = {
                 name: "Arsen",
                 id: "6",
-                message: state.dialogPageMessageText,
+                message: actions.message,
             };
 
             return {
@@ -36,16 +29,10 @@ const DialogReducer = (state = initialState, actions) => {
     }
 };
 
-export const dialogMessageActionCreator = () => {
+export const dialogMessageActionCreator = (text) => {
     return {
-        type: 'ADD-MESSAGE-DIALOG'
-    }
-}
-
-export const dialogTextActionCreator = (text) => {
-    return {
-        type: 'ADD-MESSAGE-TEXT',
-        messageText: text
+        type: 'ADD-MESSAGE-DIALOG',
+        message: text.message
     }
 }
 
