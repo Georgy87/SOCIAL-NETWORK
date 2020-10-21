@@ -12,11 +12,12 @@ const initialState = {
 const UsersReducer = (state = initialState, actions) => {
     switch (actions.type) {
         case "FOLLOW-CHANGE": {
+
             return {
                 ...state,
                 users: state.users.map((user) => {
                     if (user.id === actions.userId) {
-                        console.log(user.id);
+                        console.log(user);
                         return { ...user, followed: true };
                     }
                     return user;
@@ -27,6 +28,7 @@ const UsersReducer = (state = initialState, actions) => {
             return {
                 ...state,
                 users: state.users.map((user) => {
+                    console.log(user);
                     if (user.id === actions.userId) {
                         return { ...user, followed: false };
                     }
