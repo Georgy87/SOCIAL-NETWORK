@@ -2,6 +2,8 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { requireEmail, minLength } from "../validate/validateInput";
 import InputForLogin from "../inputs/Inputs";
+import {setLoginAuth} from "../../redux/auth-reducer";
+import {connect} from "react-redux";
 
 const lengthMin = minLength(6);
 
@@ -38,9 +40,10 @@ const LoginForm = (props) => {
 
 const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
 
-const Login = () => {
-    const submit = (val) => {
-        console.log(val);
+const Login = (props) => {
+    const submit = (data) => {
+        const { login, Password, rememberMe } = data;
+        props.setLoginAuth(login, Password, rememberMe);
     };
     return (
         <div>
@@ -49,4 +52,10 @@ const Login = () => {
     );
 };
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setLoginAuth: (mail, password, rememberMe) => dispatch(setLoginAuth(mail, password, rememberMe))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Login);
