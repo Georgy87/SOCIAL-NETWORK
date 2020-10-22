@@ -1,10 +1,10 @@
 import React from "react";
-const InputForPosts = ({ input, meta, ...props }) => {
+const InputForEmail= ({ input, meta, ...props }) => {
     const styleObj = {
         color: "red",
         marginTop: "10px",
     };
-
+    
     return (
         <div>
             <div>
@@ -14,4 +14,4 @@ const InputForPosts = ({ input, meta, ...props }) => {
         </div>
     );
 };
-export default InputForPosts;
+export default InputForEmail;

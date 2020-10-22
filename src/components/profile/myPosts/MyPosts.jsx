@@ -2,8 +2,8 @@ import React from "react";
 import "./MyPosts.css";
 import Post from "./post/Post";
 import { Field, reduxForm } from "redux-form";
-import { requireLength } from "../../validate/validateInput";
-import InputForPosts from "../../inputForForms/InputForPosts"
+// import { requireLength } from "../../validate/validateInput";
+// import InputForPosts from "../../inputForForms/InputForPosts"
 
 const MyPosts = (props) => {
     const elementPostMessages = props.postsPage.postMessages.map((item) => {
@@ -12,7 +12,6 @@ const MyPosts = (props) => {
     });
 
     const onAddPost = (text) => {
-        console.log(text);
         props.addPost(text);
     };
 
@@ -31,7 +30,7 @@ const MyPosts = (props) => {
     );
 };
 
-const require = requireLength(5);
+// const require = requireLength(5);
 
 const PostForm = (props) => {
     const { handleSubmit } = props;
@@ -41,8 +40,8 @@ const PostForm = (props) => {
                 <Field
                     className="post-text"
                     name="message"
-                    validate={[require]}
-                    component={InputForPosts}
+                    // validate={[require]}
+                    component="input"
                     type="text"
                 />
             </div>

@@ -55,8 +55,12 @@ export const followApi = {
 
 export const apiAuth = {
     getAuth() {
-        return instance.get("https://social-network.samuraijs.com/api/1.0/auth/me");
-    }
+        return instance.get("auth/me");
+    },
+    // postLogin(email, password, rememberMe) {
+    //     return instance.post()
+    // }
+
 }
 
 

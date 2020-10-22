@@ -61,6 +61,4 @@ export const setThunkAuthProfile = () => {
     }
 }
 
-
-
 export default userAuthReducer;
