@@ -8,7 +8,6 @@ import {
 } from "../../redux/profile-reducer";
 import { withRouter } from "react-router";
 import { compose } from "redux";
-import {deleteLoginAuth} from "../../redux/auth-reducer";
 
 class ProfileContainer extends Component {
     componentDidMount() {
@@ -18,7 +17,7 @@ class ProfileContainer extends Component {
         }
         this.props.setProfileToProfileInfo(userId);
         this.props.getStatusToProfileInfo(userId);
-        this.props.deleteLoginAuth("goshana87@mail.ru", "1987toyuiui", false);
+        // this.props.deleteLoginAuth("goshana87@mail.ru", "1987toyuiui", false);
     }
 
     render() {
@@ -49,6 +48,5 @@ export default compose(
         setProfileToProfileInfo,
         getStatusToProfileInfo,
         setStatusToProfileInfo,
-        deleteLoginAuth
     })
 )(ProfileContainer);

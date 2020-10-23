@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const userAuthReducer = (state = initialState, actions) => {
-    console.log(actions.userData)
+   
     switch (actions.type) {
         case "USER-AUTH-DATA": {
             return {
@@ -30,7 +30,6 @@ const userAuthReducer = (state = initialState, actions) => {
 };
 
 export const setUserAuthData = (id, login, email, isAuth) => {
-    console.log(id, login, email, isAuth);
     return {
         type: "USER-AUTH-DATA",
         userData: {
@@ -72,14 +71,12 @@ export const setLoginAuth = (email, login, rememberMe) => (dispatch) => {
     })
 }
 
-export const deleteLoginAuth = (email, login, rememberMe) => (dispatch) => {
-    apiAuth.logout(email, login, rememberMe).then((response) => {
-        console.log(response)
+export const deleteLoginAuth = () => (dispatch) => {
+    apiAuth.logout().then((response) => {
         if (response.data.resultCode === 0) {
             dispatch(setUserAuthData(null, null, null, false));
         }
     })
 }
-// deleteLoginAuth("goshana87@mail.ru", "1987toyuiui", false)(dispatch);
 
 export default userAuthReducer;

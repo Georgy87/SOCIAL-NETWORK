@@ -1,14 +1,16 @@
 import React from "react";
 import "./Header.css";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import newPhoto from "../../assets/img/preloader/3ac3da68aeffb6bc94fe1f9f2cf3b7b5.jpg";
 
 const Header = (props) => {
-
     let element = props.isAuth ? (
-        props.login
+        <div className="logout">
+            {props.login}
+            <button className="logoutBtn" onClick={props.deleteLoginAuth}>Logout</button>
+        </div>
     ) : (
-        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/login"><button className="logoutBtn">Login</button></NavLink>
     );
 
     let photo = "";
@@ -18,16 +20,11 @@ const Header = (props) => {
         photo = newPhoto;
     }
 
-
     return (
         <header className="header">
             <div className="header-title">
                 <div className="header-login-user">
-                    {/* SOCIAL NETWORK */}
-                    <span>
-
-                        {element}
-                    </span>
+                    <span>{element}</span>
                 </div>
             </div>
         </header>

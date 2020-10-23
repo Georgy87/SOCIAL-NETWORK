@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import { connect } from "react-redux";
-import { setUserAuthData, setUserProfileAuth, setThunkAuthProfile } from "../../redux/auth-reducer";
+import { setUserAuthData, setUserProfileAuth, setThunkAuthProfile, deleteLoginAuth } from "../../redux/auth-reducer";
 
 class HeaderComponent extends Component {
     constructor(props) {
@@ -16,17 +16,18 @@ class HeaderComponent extends Component {
     }
 }
 const mapStateToProps = (state) => {
-   
+
     const { auth } = state;
     return {
         login: auth.login,
         isAuth: auth.isAuth,
-        authUserId: auth.userProfileAuth
+        authUserId: auth.userProfileAuth,
     };
 };
 
 export default connect(mapStateToProps, {
     setUserAuthData,
     setUserProfileAuth,
-    setThunkAuthProfile
+    setThunkAuthProfile,
+    deleteLoginAuth
 })(HeaderComponent);
