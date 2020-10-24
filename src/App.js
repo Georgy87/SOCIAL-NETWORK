@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import HeaderComponent from "./components/header/HeaderContainer";
 import Navbar from "./components/navbar/Navbar";
 import ProfileContainer from "./components/profile/ProfileContainer";
@@ -8,39 +8,61 @@ import { Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./components/login/Login";
 import { connect } from "react-redux";
+import { setInitialization } from "./redux/app-reducer";
+import { withRouter } from "react-router-dom";
+import { withAuthRedirect } from "./components/hoc/WithAuthRedirect";
+import { compose } from "redux";
 
 import "./app.css";
 
-const App = (props) => {
-    console.log(props.isAuth);
-    const elementProfile = () => <ProfileContainer />;
-    const elementDialog = () => <DialogContainer />;
-    const elementUsers = () => <UsersContainer />;
-    const elementLoginPage = () => <LoginPage />;
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.props = props;
+    }
 
-    return (
-        <div className="app-wrapper">
-            <HeaderComponent />
-            <Navbar />
-            <div className="app-wrapper-content">
-                {props.isAuth ? (
-                    <div>
-                        <Route path="/profile/:userId?" render={elementProfile}/>
-                        <Route path="/dialog" render={elementDialog} />
-                        <Route path="/users" render={elementUsers} />
-                        <Route path="/login" render={elementLoginPage} />
-                    </div>
-                ) : (
-                    <LoginPage />
-                )}
+    componentDidMount() {
+
+        this.props.setInitialization();
+    }
+
+    render() {
+        const elementProfile = () => <ProfileContainer />;
+        const elementDialog = () => <DialogContainer />;
+        const elementUsers = () => <UsersContainer />;
+        const elementLoginPage = () => <LoginPage />;
+        return (
+            <div className="app-wrapper">
+                <HeaderComponent />
+                <Navbar />
+                <div className="app-wrapper-content">
+                    {this.props.initialization ? (
+                        <div>
+                            <Route
+                                path="/profile/:userId?"
+                                render={elementProfile}
+                            />
+                            <Route path="/dialog" render={elementDialog} />
+                            <Route path="/users" render={elementUsers} />
+                            <Route path="/login" render={elementLoginPage} />
+                        </div>
+                    ) : (
+                        <LoginPage />
+                    )}
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth,
+        initialization: state.appPage.initialization,
     };
 };
-export default connect(mapStateToProps)(App);
+
+// const withRouterApp = withRouter(App);
+
+export default connect(mapStateToProps, {
+    setInitialization,
+})(App);

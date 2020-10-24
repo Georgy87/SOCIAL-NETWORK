@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const userAuthReducer = (state = initialState, actions) => {
-   
+
     switch (actions.type) {
         case "USER-AUTH-DATA": {
             return {
@@ -49,7 +49,7 @@ export const setUserProfileAuth = (userProfileAuth) => {
 };
 
 export const setThunkAuthProfile = () => (dispatch) => {
-    apiAuth.getAuth().then((response) => {
+    return apiAuth.getAuth().then((response) => {
         if (response.data.resultCode === 0) {
             const {id, login, email } = response.data.data;
             dispatch(setUserAuthData(id, login, email, true));

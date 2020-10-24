@@ -9,7 +9,6 @@ let initialState = {
 }
 
 const DialogReducer = (state = initialState, actions) => {
-
     switch (actions.type) {
         case "ADD-MESSAGE-DIALOG": {
             let newMessage = {
