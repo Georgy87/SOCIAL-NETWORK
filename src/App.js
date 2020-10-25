@@ -7,6 +7,7 @@ import UsersContainer from "./components/users/UsersContainer";
 import { Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./components/login/Login";
+import { setThunkAuthProfile } from "./redux/auth-reducer";
 import { connect } from "react-redux";
 
 import "./app.css";
@@ -18,7 +19,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.props.setInitialization();
+        this.props.setThunkAuthProfile();
     }
 
     render() {
@@ -31,7 +32,7 @@ class App extends Component {
                 <HeaderComponent />
                 <Navbar />
                 <div className="app-wrapper-content">
-                    {this.props.initialization ? (
+                    {this.props.isAuth ? (
                         <div>
                             <Route
                                 path="/profile/:userId?"
@@ -51,10 +52,9 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-
     return {
-
+        isAuth: state.auth.isAuth
     };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {setThunkAuthProfile})(App);
