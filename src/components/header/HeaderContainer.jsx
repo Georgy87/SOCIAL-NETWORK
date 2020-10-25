@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from "./Header";
+import Header from "./header";
 import { connect } from "react-redux";
 import { setUserAuthData, setUserProfileAuth, deleteLoginAuth } from "../../redux/auth-reducer";
 
@@ -18,7 +18,6 @@ const mapStateToProps = (state) => {
         login: auth.login,
         isAuth: auth.isAuth,
         authUserId: auth.userProfileAuth,
-        initialization:  state.appPage.initialization
     };
 };
 

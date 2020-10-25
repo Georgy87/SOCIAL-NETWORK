@@ -8,10 +8,6 @@ import { Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./components/login/Login";
 import { connect } from "react-redux";
-import { setInitialization } from "./redux/app-reducer";
-import { withRouter } from "react-router-dom";
-import { withAuthRedirect } from "./components/hoc/WithAuthRedirect";
-import { compose } from "redux";
 
 import "./app.css";
 
@@ -22,7 +18,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-
         this.props.setInitialization();
     }
 
@@ -56,13 +51,10 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
+
     return {
-        initialization: state.appPage.initialization,
+
     };
 };
 
-// const withRouterApp = withRouter(App);
-
-export default connect(mapStateToProps, {
-    setInitialization,
-})(App);
+export default connect(mapStateToProps)(App);
