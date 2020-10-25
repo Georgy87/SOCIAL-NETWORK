@@ -2,37 +2,15 @@ import React from "react";
 import Dialog from "./Dialogs";
 import { dialogMessageActionCreator } from "../../redux/dialog-reducer";
 import { connect } from "react-redux";
-// import { withAuthRedirect } from "../hoc/WithAuthRedirect";
+import {dialogPage} from "../reselectors/dialogs-reselectors";
 import { compose } from 'redux';
-
-const mapAuthToProps = (state) => {
-    return {
-        auth: state.auth.isAuth
-    }
-}
-
-// let redirectAuthMapToProps = connect(mapAuthToProps)(withAuthRedirect(Dialog));
 
 const mapStateToProps = (state) => {
     return {
-        state: state.dialogPage,
-        auth: state.auth.isAuth
+        state: dialogPage(state),
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        addMessage: (message) => {
-            dispatch(dialogMessageActionCreator(message));
-        },
-    };
-};
-
-// const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(withAuthRedirect(redirectAuthMapToProps));
-
-// export default DialogContainer;
 export default compose(
-    connect(mapAuthToProps),
-    // withAuthRedirect,
-    connect(mapStateToProps, mapDispatchToProps)
+    connect(mapStateToProps, {dialogMessageActionCreator})
 )(Dialog);

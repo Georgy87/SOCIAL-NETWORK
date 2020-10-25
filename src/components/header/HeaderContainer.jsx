@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "./header";
 import { connect } from "react-redux";
 import { setUserAuthData, setUserProfileAuth, deleteLoginAuth } from "../../redux/auth-reducer";
+import { getLogin,  getIsAuth, getAuthUserId} from "../reselectors/header-reselectors";
 
 class HeaderComponent extends Component {
     constructor(props) {
@@ -13,11 +14,10 @@ class HeaderComponent extends Component {
     }
 }
 const mapStateToProps = (state) => {
-    const { auth } = state;
     return {
-        login: auth.login,
-        isAuth: auth.isAuth,
-        authUserId: auth.userProfileAuth,
+        login: getLogin(state),
+        isAuth: getIsAuth(state),
+        authUserId: getAuthUserId(state),
     };
 };
 

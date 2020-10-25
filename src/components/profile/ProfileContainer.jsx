@@ -7,6 +7,7 @@ import {
     setStatusToProfileInfo,
 } from "../../redux/profile-reducer";
 import { withRouter } from "react-router";
+import { getProfile, getProfileStatus } from "../reselectors/profile-reselectors";
 import { compose } from "redux";
 
 class ProfileContainer extends Component {
@@ -27,21 +28,14 @@ class ProfileContainer extends Component {
     }
 }
 
-const mapAuthToProps = (state) => {
-    return {
-        auth: state.auth.isAuth,
-        status: state.postsPage.status,
-    };
-};
-
 const mapStateToProps = (state) => {
     return {
-        users: state.postsPage.userProfile,
+        users: getProfile(state),
+        status: getProfileStatus(state),
     };
 };
 
 export default compose(
-    connect(mapAuthToProps),
     // withAuthRedirect,
     withRouter,
     connect(mapStateToProps, {
